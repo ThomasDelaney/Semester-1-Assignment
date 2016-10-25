@@ -2,6 +2,7 @@ void setup()
 {
   size(700,700);
   background(0);
+  smooth();
 }
 
 void draw()

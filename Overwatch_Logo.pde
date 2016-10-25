@@ -22,20 +22,13 @@ class Overwatch_Logo
 
   void drawLogo()
   {
-    PShape Logo = createShape(GROUP);
-    PShape arc1 = createShape();
-    float sizeFactor = size/2.8;
-    float subFactor = size/7.4;
-
-    arc1.beginShape();
-
-    arc1.noFill();
-    arc1.stroke(255);
-    arc1.vertex(x, y);
-    arc1.bezierVertex(x, y, x+25, y-25, x-25, y-25);
-
-    arc1.endShape(CLOSE);
-    shape(arc1);
+    noFill();
+    stroke(100);
+    strokeWeight(13);
+    strokeCap(SQUARE);
+    arc(x, y, size, size, -QUARTER_PI, PI+QUARTER_PI);
+    stroke(255, 165, 0);
+    arc(x, y, size, size, PI+QUARTER_PI, PI+HALF_PI+QUARTER_PI);
   }
 
   //getters and setters for class fields

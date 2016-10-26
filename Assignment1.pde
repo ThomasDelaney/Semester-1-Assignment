@@ -7,6 +7,6 @@ void setup()
 
 void draw()
 {
-  Overwatch_Logo logo1 = new Overwatch_Logo(300,300,100);
+  Overwatch_Logo logo1 = new Overwatch_Logo(300,300,300);
   logo1.drawLogo();
 }

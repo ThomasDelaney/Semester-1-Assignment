@@ -3,21 +3,25 @@ void setup()
   size(1280,720);
   background(0);
   smooth();
-  drawBackground();
+  //drawBackground();
 }
 
 PFont name;
 
 void draw()
 {
-  //Overwatch_Logo logo1 = new Overwatch_Logo(300,300,400, color(100));
-  //logo1.drawLogo();
-  /*
-  name = createFont("koverwatch.ttf", 100);
+  //Logo over1 = new Logo(300,300,400, color(100));
+  //over1.drawOverwatchLogo();
+  
+ //name = createFont("koverwatch.ttf", 100);
 
-  textFont(name);
-  fill(255);
-  text("WNSTN", 12, 60);*/
+  //textFont(name);
+  //fill(255);
+  //text("WNSTN", 12, 60);
+  
+  Logo athena = new Logo (300,300,300, color(16, 63, 115));
+  athena.drawAthenaLogo();
+  
 }
 
 void drawBackground()
@@ -27,33 +31,33 @@ void drawBackground()
   float rectCount = 0;
   
   color from = color(12, 16, 32);
-  color to = color(22, 70, 131);
+  color to = color(16, 63, 115);
   
   boolean half = false;
   noStroke();
   
-  while(y < height)
+  while (y < height)
   {
     while (x < width)
     {
       if (!half)
       {
+        color newCol = lerpColor(from, to, rectCount/500);
+        fill(newCol);
+        
         if (rectCount > width/2)
         {
           rectCount = 0;
           half = true;
         }
-        
-        color newCol = lerpColor(from, to, rectCount/500);
-        fill(newCol);
       }
       else
       {
-        color newCol = lerpColor(to, from, rectCount/500);
+        color newCol = lerpColor(to, from, rectCount/300);
         fill(newCol);
       }
       
-      rect(x, y, 10, 10);
+      rect(x, y, 5, 5);
       x++;
       rectCount++;
     }

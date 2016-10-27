@@ -24,24 +24,42 @@ void drawBackground()
 {
   float x = 0;
   float y = 0;
-  int layerCount = 0;
+  float rectCount = 0;
   
   color from = color(12, 16, 32);
   color to = color(22, 70, 131);
   
+  boolean half = false;
   noStroke();
   
   while(y < height)
   {
     while (x < width)
     {
-      color newCol = lerpColor(from, to, x/10000);
-      fill(newCol);
-      rect(x, y, 20, 20);
-      x+=2;
-      layerCount++;
+      if (!half)
+      {
+        if (rectCount > width/2)
+        {
+          rectCount = 0;
+          half = true;
+        }
+        
+        color newCol = lerpColor(from, to, rectCount/500);
+        fill(newCol);
+      }
+      else
+      {
+        color newCol = lerpColor(to, from, rectCount/500);
+        fill(newCol);
+      }
+      
+      rect(x, y, 10, 10);
+      x++;
+      rectCount++;
     }
-    y+=2;
+    y++;
     x = 0;
+    rectCount = 0;
+    half = false;
   }
 }

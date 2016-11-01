@@ -3,14 +3,15 @@ void setup()
   size(1280,720);
   background(0);
   smooth();
-  //drawBackground();
+  PFont below;
+  below = loadFont("koverwatch.ttf"); 
+  textFont(below, 100);
 }
 
 PFont name;
 
 void draw()
 {
-  //Logo over1 = new Logo(300,300,400, color(100));
   //over1.drawOverwatchLogo();
   
  //name = createFont("koverwatch.ttf", 100);
@@ -19,7 +20,7 @@ void draw()
   //fill(255);
   //text("WNSTN", 12, 60);
   
-  Logo athena = new Logo (300,300,300, color(16, 63, 115));
+  Logo athena = new Logo (300,300,300, color(16, 63, 115), true);
   athena.drawAthenaLogo();
   
 }

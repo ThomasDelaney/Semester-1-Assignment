@@ -5,6 +5,7 @@ class Logo
   int size;
   float logoThicknessConst = 7.69230769231;
   color c;
+  boolean withText = false; 
 
   //default constructor
   Logo()
@@ -12,15 +13,17 @@ class Logo
     x = width/2;
     y = height/2;
     size = 80;
+    withText = false;
   }
 
   //parameterised constructor
-  Logo(float x, float y, int size, color c)
+  Logo(float x, float y, int size, color c, boolean withText)
   {
     this.x = x;
     this.y = y;
     this.size = size;
     this.c = c;
+    this.withText = withText;
   }
 
   void drawOverwatchLogo()
@@ -63,15 +66,31 @@ class Logo
   
   void drawAthenaLogo()
   {
-    noFill();
+    fill(c);
     stroke(c);
     
     beginShape();
-    vertex(x, y);
     bezier(x+convertSize(74), y+convertSize(231), x+convertSize(200), y+convertSize(210), x+convertSize(167), y+convertSize(62), x+convertSize(139.5), y+convertSize(110));
-    line (x+convertSize(139.5), y+convertSize(110), x+convertSize(165), y+convertSize(45));
-    line (x+convertSize(74), y+convertSize(231), x+convertSize(163), y+convertSize(-5));
+    bezier(x+convertSize(291.4), y+convertSize(231), x+convertSize(193.5), y+convertSize(178), x+convertSize(184), y+convertSize(158), x+convertSize(165), y+convertSize(45));
     endShape();
+    
+    beginShape();
+    vertex(x+convertSize(74), y+convertSize(231));
+    vertex(x+convertSize(139.5), y+convertSize(110));
+    vertex(x+convertSize(165), y+convertSize(45));
+    vertex(x+convertSize(163), y+convertSize(-5));
+    endShape();
+    
+    beginShape();
+    vertex(x+convertSize(291.4), y+convertSize(231));
+    vertex(x+convertSize(165), y+convertSize(45));
+    vertex(x+convertSize(163), y+convertSize(-5));
+    endShape();
+  
+    if (withText == true)
+    {
+      //text("Athena", x+convertSize(75), y+convertSize(325));
+    }
   }
   
   /* function which will take a constant x and y value which I figured out 

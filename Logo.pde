@@ -6,7 +6,7 @@ class Logo
   float logoThicknessConst = 7.69230769231;
   color c;
   boolean withText = false; 
-
+  
   //default constructor
   Logo()
   {
@@ -17,12 +17,11 @@ class Logo
   }
 
   //parameterised constructor
-  Logo(float x, float y, int size, color c, boolean withText)
+  Logo(float x, float y, int size, boolean withText)
   {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.c = c;
     this.withText = withText;
   }
 
@@ -64,10 +63,10 @@ class Logo
 
   }
   
-  void drawAthenaLogo()
+  void drawAthenaLogo(color c)
   {
+    noStroke();
     fill(c);
-    stroke(c);
     
     beginShape();
     bezier(x+convertSize(74), y+convertSize(231), x+convertSize(200), y+convertSize(210), x+convertSize(167), y+convertSize(62), x+convertSize(139.5), y+convertSize(110));
@@ -89,11 +88,10 @@ class Logo
   
     if (withText == true)
     {
-      //text("Athena", x+convertSize(75), y+convertSize(325));
-    }
+      text("Athena", x+convertSize(50), y+convertSize(325));
+    }  
   }
-  
-  /* function which will take a constant x and y value which I figured out 
+   /* function which will take a constant x and y value which I figured out 
      by trial and error to create the two shapes which is in between the arcs,
      I used size 300 which figuring out these constants so that is why I divide
      by 300 to get a number which is divided by the current size givin in the

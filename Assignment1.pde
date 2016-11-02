@@ -1,29 +1,30 @@
 void setup()
 {
   size(1280,720);
-  background(0);
-  smooth();
-  PFont below;
-  below = loadFont("koverwatch.ttf"); 
-  textFont(below, 100);
+  drawBackground();
+  below = createFont("bignoodletoo.ttf", 150); 
+  textFont(below);
 }
-
-PFont name;
-
+ 
 void draw()
 {
-  //over1.drawOverwatchLogo();
+  if (UIState == 0)
+  {
+    start.loadLogin();
+  }
   
- //name = createFont("koverwatch.ttf", 100);
-
-  //textFont(name);
-  //fill(255);
-  //text("WNSTN", 12, 60);
-  
-  Logo athena = new Logo (300,300,300, color(16, 63, 115), true);
-  athena.drawAthenaLogo();
-  
+  if (frameCount % 60 == 0)
+  {
+    println(timer);
+    timer++;
+  }
 }
+
+Logo athena1 = new Logo (375, 50, 400, true);
+introScreen start = new introScreen();
+PFont below;
+int UIState = 0;
+int timer = 0;
 
 void drawBackground()
 {

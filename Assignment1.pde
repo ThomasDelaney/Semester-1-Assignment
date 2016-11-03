@@ -8,7 +8,7 @@ void setup()
  
 void draw()
 {
-  if (UIState == 0)
+  if (state == 0)
   {
     start.loadLogin();
   }
@@ -23,8 +23,9 @@ void draw()
 Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
 PFont below;
-int UIState = 0;
-int timer = 0;
+int state = 0;
+int timer = 1;
+int opState = 0;
 
 void drawBackground()
 {

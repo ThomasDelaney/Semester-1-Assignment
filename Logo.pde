@@ -66,7 +66,7 @@ class Logo
   void drawAthenaLogo(color c)
   {
     noStroke();
-    fill(c);
+    fill(c, 128);   
     
     beginShape();
     bezier(x+convertSize(74), y+convertSize(231), x+convertSize(200), y+convertSize(210), x+convertSize(167), y+convertSize(62), x+convertSize(139.5), y+convertSize(110));

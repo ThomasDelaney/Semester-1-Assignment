@@ -37,7 +37,6 @@ class Logo
     
     fill(c);
     noStroke();
-    strokeWeight(1);
     
     beginShape();
     
@@ -63,10 +62,14 @@ class Logo
 
   }
   
-  void drawAthenaLogo(color c)
+  void drawAthenaLogo(color o)
   {
-    noStroke();
-    fill(c, 128);   
+    color c = color(255, 140, 0);
+    
+    strokeWeight(2);
+    strokeCap(SQUARE);
+    fill(c);   
+    stroke(c);
     
     beginShape();
     bezier(x+convertSize(74), y+convertSize(231), x+convertSize(200), y+convertSize(210), x+convertSize(167), y+convertSize(62), x+convertSize(139.5), y+convertSize(110));
@@ -88,9 +91,12 @@ class Logo
   
     if (withText == true)
     {
+      fill(o);  
+      textSize(150);
       text("Athena", x+convertSize(50), y+convertSize(325));
     }  
   }
+
    /* function which will take a constant x and y value which I figured out 
      by trial and error to create the two shapes which is in between the arcs,
      I used size 300 which figuring out these constants so that is why I divide

@@ -1,31 +1,61 @@
+import processing.sound.*;
+
 void setup()
 {
   size(1280,720);
+  frameRate(60);
+  
   drawBackground();
+  bg = loadImage("background.jpg");
+  
   below = createFont("bignoodletoo.ttf", 150); 
+  introSound = new SoundFile(this, "loadingSound.mp3");
   textFont(below);
 }
  
 void draw()
 {
-  if (state == 0)
-  {
-    start.loadLogin();
-  }
+  image(bg, 0, 0);
   
   if (frameCount % 60 == 0)
   {
-    println(timer);
+    //println(timer);
     timer++;
+    introSoundTimer++;
+    
+    if (introSoundTimer >= 29)
+    {
+      soundPlaying = false;
+      introSoundTimer = 0;
+    }
+  }
+  
+  if (state == 0)
+  {
+    start.loadLogin();
+    
+    if(soundPlaying == false)
+    {
+      introSound.loop();
+      soundPlaying = true;
+    }
   }
 }
+
+PImage bg;
 
 Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
 PFont below;
 int state = 0;
 int timer = 1;
-int opState = 0;
+char log_name[] = new char[10];
+boolean soundPlaying = false;
+int introSoundTimer = 1;
+
+
+SoundFile introSound;
+
 
 void drawBackground()
 {
@@ -69,4 +99,6 @@ void drawBackground()
     rectCount = 0;
     half = false;
   }
+  
+  save("background.jpg");
 }

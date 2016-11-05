@@ -7,7 +7,7 @@ void setup()
   
   drawBackground();
   bg = loadImage("background.jpg");
-  
+  delay(1000);
   below = createFont("bignoodletoo.ttf", 150); 
   introSound = new SoundFile(this, "loadingSound.mp3");
   textFont(below);

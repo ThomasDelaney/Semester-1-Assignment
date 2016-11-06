@@ -7,10 +7,10 @@ void setup()
   
   drawBackground();
   bg = loadImage("background.jpg");
-  delay(1000);
-  below = createFont("bignoodletoo.ttf", 150); 
+  overwatch = createFont("bignoodletoo.ttf", 150); 
+  cred = createFont("koverwatch.ttf", 150); 
   introSound = new SoundFile(this, "loadingSound.mp3");
-  textFont(below);
+  textFont(overwatch);
 }
  
 void draw()
@@ -46,7 +46,8 @@ PImage bg;
 
 Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
-PFont below;
+PFont overwatch;
+PFont cred;
 int state = 0;
 int timer = 1;
 char log_name[] = new char[10];

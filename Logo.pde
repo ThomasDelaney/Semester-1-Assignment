@@ -92,6 +92,7 @@ class Logo
     if (withText == true)
     {
       fill(o);  
+      textFont(overwatch);
       textSize(150);
       text("Athena", x+convertSize(50), y+convertSize(325));
     }  

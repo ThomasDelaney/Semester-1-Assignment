@@ -19,6 +19,13 @@ class introScreen
   float PassScaleAmountX = PassBoxX-(PassBoxX/scaleFactor);
   float PassScaleAmountY = PassBoxY-(PassBoxY/scaleFactor);
   
+  ArrayList<Creds> UserLogin = new ArrayList<Creds>();
+  
+  boolean UserLoginClicked = false;
+  boolean UserPasswordClicked = false;
+  
+  float LoginCurX = 413;
+  
   void loadLogin()
   {
     o = color(255, 140, 0, inc);
@@ -34,6 +41,7 @@ class introScreen
       }
       
       fill(255);
+      textFont(overwatch);
       textSize(50);
       text("Loading", 550, 600);
       
@@ -56,28 +64,97 @@ class introScreen
     }
     else
     {
+      textFont(overwatch);
       textSize(45);
       text("USERNAME :", 240, 590);
       text("PASSWORD :", 240, 675);
       
       strokeWeight(3);
       stroke(255, 140, 0);
-      fill(255);
       rectMode(CENTER);
-      if ((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2)))
+      
+      if (((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2))) && UserLoginClicked == false)
       {
-        pushMatrix();
-        scale(scaleFactor);
-        rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
-        popMatrix();
+        if (UserLoginClicked == false)
+        {
+          fill(255);
+          
+          pushMatrix();
+          scale(scaleFactor);
+          rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
+          popMatrix();
+         
+          if (mousePressed == true && UserLoginClicked == false)
+          {
+            UserLoginClicked = true;
+            delay(100);
+          }
+        }
       }
       else
       {
-        rect(UserBoxX, UserBoxY, UserBoxWidth, UserBoxHeight);
+        if (UserLoginClicked == true)
+        {
+          fill(200);
+          
+          pushMatrix();
+          scale(scaleFactor);
+          rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
+          popMatrix();
+          
+          if (keyPressed)
+          {
+            if (UserLogin.size() < 12)
+            {
+              Creds e = new Creds();
+              
+              if (key == ' ')
+              {
+                println("You cannot have this character "+ key + " in your Username");
+              }
+              else
+              {
+                e.c = key;
+                e.x = LoginCurX+25;
+                
+                LoginCurX += 25;
+  
+                UserLogin.add(e);
+                delay(100);
+              }
+            }
+          }
+            
+          if (mousePressed == true)
+          {
+            UserLoginClicked = false;
+            delay(100);
+          }
+        }
+        else
+        {
+          fill(255);
+          rect(UserBoxX, UserBoxY, UserBoxWidth, UserBoxHeight);
+        }
       }
       
+      for (int i = 0; i < UserLogin.size(); i++)
+      {
+        Creds Username =  UserLogin.get(i);
+        char letter = Username.c;
+        float textX = Username.x;
+        
+        fill(255, 140, 0);
+        textFont(cred);
+        textSize(50);
+        text(letter, textX, 593);
+      }
+      
+      fill(255);
       if ((mouseX > PassBoxX-(PassBoxWidth/2) && mouseX < PassBoxX+(PassBoxWidth/2)) && (mouseY > PassBoxY-(PassBoxHeight/2) && mouseY < PassBoxY+(PassBoxHeight/2)))
       {
+        fill(255);
+        
         pushMatrix();
         scale(scaleFactor);
         rect(PassBoxX-PassScaleAmountX, PassBoxY-PassScaleAmountY, PassBoxWidth, PassBoxHeight);

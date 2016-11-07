@@ -90,6 +90,8 @@ class introScreen
             delay(100);
           }
         }
+        
+        displayUsername();
       }
       else
       {
@@ -111,6 +113,16 @@ class introScreen
               if (key == ' ')
               {
                 println("You cannot have this character "+ key + " in your Username");
+              }
+              else if (key == BACKSPACE && (UserLogin.size() != 0))
+              {
+                UserLogin.remove(UserLogin.get(UserLogin.size()-1));
+                LoginCurX -= 25;
+                delay(100);
+              }
+              else if (key == BACKSPACE && (UserLogin.size() == 0))
+              {
+                println("Can't press backspace when array is empty");
               }
               else
               {
@@ -136,18 +148,8 @@ class introScreen
           fill(255);
           rect(UserBoxX, UserBoxY, UserBoxWidth, UserBoxHeight);
         }
-      }
-      
-      for (int i = 0; i < UserLogin.size(); i++)
-      {
-        Creds Username =  UserLogin.get(i);
-        char letter = Username.c;
-        float textX = Username.x;
         
-        fill(255, 140, 0);
-        textFont(cred);
-        textSize(50);
-        text(letter, textX, 593);
+        displayUsername();
       }
       
       fill(255);
@@ -165,5 +167,29 @@ class introScreen
         rect(PassBoxX, PassBoxY, PassBoxWidth, PassBoxHeight);
       }
     }
+  }
+  
+  void displayUsername()
+  {
+    for (int i = 0; i < UserLogin.size(); i++)
+      {
+        Creds Username =  UserLogin.get(i);
+        char letter = Username.c;
+        float textX = Username.x;
+        
+        fill(255, 140, 0);
+        textFont(cred);
+        
+        if (UserLoginClicked == true || ((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2))))
+        {
+          textSize(50);
+          text(letter, textX, 593);
+        }
+        else
+        {
+          textSize(30);
+          text(letter, textX+15, 585);
+        }
+      }
   }
 }

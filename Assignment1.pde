@@ -36,7 +36,7 @@ void draw()
     
     if(soundPlaying == false)
     {
-      introSound.loop();
+      introSound.play();
       soundPlaying = true;
     }
   }
@@ -50,10 +50,11 @@ PFont overwatch;
 PFont cred;
 int state = 0;
 int timer = 1;
-char log_name[] = new char[10];
+
 boolean soundPlaying = false;
 int introSoundTimer = 1;
 
+Table users;
 
 SoundFile introSound;
 

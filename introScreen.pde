@@ -25,8 +25,12 @@ class introScreen
   boolean UserLoginClicked = false;
   boolean UserPassClicked = false;
   
+  boolean boxCheck = false;
+  
   float LoginCurX = 413;
   float PassCurX = 413;
+  
+  boolean TabToBox = false;
   
   void loadLogin()
   {
@@ -143,10 +147,8 @@ class introScreen
           {
             Creds e = new Creds();
               
-            if (key == ' ')
-            {
-              println("You cannot have this character "+ key + " in your Username");
-            }
+            if (key == ' ' || key == ENTER || key == DELETE || keyCode == UP || keyCode == LEFT || keyCode == RIGHT);
+  
             else if (key == BACKSPACE && (UserLogin.size() != 0))
             {
               UserLogin.remove(UserLogin.get(UserLogin.size()-1));
@@ -155,6 +157,17 @@ class introScreen
             }
             
             else if (key == BACKSPACE && (UserLogin.size() == 0));
+            
+            else if (key == TAB || keyCode == DOWN)
+            {
+              UserLoginClicked = false;
+              delay(100);
+              UserPassClicked = true;
+              
+              //credit to Mohamad for helping me with this bug :)
+              //This prevents the Tab key being passed in twice by giving key a random value not accepted by the error checking
+              key = DELETE;
+            }
 
             else
             {
@@ -167,15 +180,8 @@ class introScreen
               delay(100);
             }
           }
-          else if (UserLogin.size() == 12)
-          {
-            if (key == BACKSPACE && (UserLogin.size() != 0))
-            {
-              UserLogin.remove(UserLogin.get(UserLogin.size()-1));
-              LoginCurX -= 25;
-              delay(100);
-            }
-          }
+          
+          fullLoginCheck();
         }
             
         if (mousePressed == true)
@@ -256,10 +262,8 @@ class introScreen
           {
             Creds p = new Creds();
               
-            if (key == ' ')
-            {
-              println("You cannot have this character "+ key + " in your Password");
-            }
+            if (key == ' ' || key == ENTER || key == DELETE || keyCode == DOWN || keyCode == LEFT || keyCode == RIGHT);
+     
             else if (key == BACKSPACE && (UserPass.size() != 0))
             {
               UserPass.remove(UserPass.get(UserPass.size()-1));
@@ -268,6 +272,15 @@ class introScreen
             }
             
             else if (key == BACKSPACE && (UserPass.size() == 0));
+            
+            else if (key == TAB || keyCode == UP)
+            {
+              UserPassClicked = false;
+              delay(100);
+              UserLoginClicked = true;
+              
+              key = DELETE;
+            }
  
             else
             {
@@ -280,15 +293,8 @@ class introScreen
               delay(100);
             }
           }
-          else if (UserPass.size() == 12)
-          {
-            if (key == BACKSPACE && (UserPass.size() != 0))
-            {
-              UserPass.remove(UserPass.get(UserPass.size()-1));
-              PassCurX -= 25;
-              delay(100);
-            }
-          }
+           
+          fullPassCheck();
         }
             
         if (mousePressed == true)
@@ -304,6 +310,50 @@ class introScreen
       }
         
       displayPassword();
+    }
+  }
+  
+  void fullPassCheck()
+  {
+    if (UserPass.size() == 12)
+    {
+      if (key == BACKSPACE && (UserPass.size() != 0))
+      {
+        UserPass.remove(UserPass.get(UserPass.size()-1));
+        PassCurX -= 25;
+        delay(100);
+      }
+            
+      else if ((key == TAB || keyCode == UP) && (UserPass.size() != 0))
+      {
+        UserPassClicked = false;
+        delay(100);
+        UserLoginClicked = true;
+        
+        key = DELETE;
+      }
+    }
+  }
+  
+  void fullLoginCheck()
+  {
+    if (UserLogin.size() == 12)
+    {
+      if (key == BACKSPACE && (UserLogin.size() != 0))
+      {
+        UserLogin.remove(UserLogin.get(UserLogin.size()-1));
+        LoginCurX -= 25;
+        delay(100);
+      }
+            
+      else if ((key == TAB || keyCode == DOWN) && (UserLogin.size() != 0))
+      {
+        UserLoginClicked = false;
+        delay(100);
+        UserPassClicked = true;
+        
+        key = DELETE;
+      }
     }
   }
 }

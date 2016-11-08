@@ -153,10 +153,9 @@ class introScreen
               LoginCurX -= 25;
               delay(100);
             }
-            else if (key == BACKSPACE && (UserLogin.size() == 0))
-            {
-              println("Can't press backspace when array is empty");
-            }
+            
+            else if (key == BACKSPACE && (UserLogin.size() == 0));
+
             else
             {
               e.c = key;
@@ -165,6 +164,15 @@ class introScreen
               LoginCurX += 25;
   
               UserLogin.add(e);
+              delay(100);
+            }
+          }
+          else if (UserLogin.size() == 12)
+          {
+            if (key == BACKSPACE && (UserLogin.size() != 0))
+            {
+              UserLogin.remove(UserLogin.get(UserLogin.size()-1));
+              LoginCurX -= 25;
               delay(100);
             }
           }
@@ -258,10 +266,9 @@ class introScreen
               PassCurX -= 25;
               delay(100);
             }
-            else if (key == BACKSPACE && (UserPass.size() == 0))
-            {
-              println("Can't press backspace when array is empty");
-            }
+            
+            else if (key == BACKSPACE && (UserPass.size() == 0));
+ 
             else
             {
               p.c = key;
@@ -270,6 +277,15 @@ class introScreen
               PassCurX += 25;
   
               UserPass.add(p);
+              delay(100);
+            }
+          }
+          else if (UserPass.size() == 12)
+          {
+            if (key == BACKSPACE && (UserPass.size() != 0))
+            {
+              UserPass.remove(UserPass.get(UserPass.size()-1));
+              PassCurX -= 25;
               delay(100);
             }
           }

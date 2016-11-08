@@ -20,11 +20,13 @@ class introScreen
   float PassScaleAmountY = PassBoxY-(PassBoxY/scaleFactor);
   
   ArrayList<Creds> UserLogin = new ArrayList<Creds>();
+  ArrayList<Creds> UserPass = new ArrayList<Creds>();
   
   boolean UserLoginClicked = false;
-  boolean UserPasswordClicked = false;
+  boolean UserPassClicked = false;
   
   float LoginCurX = 413;
+  float PassCurX = 413;
   
   void loadLogin()
   {
@@ -73,99 +75,8 @@ class introScreen
       stroke(255, 140, 0);
       rectMode(CENTER);
       
-      if (((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2))) && UserLoginClicked == false)
-      {
-        if (UserLoginClicked == false)
-        {
-          fill(255);
-          
-          pushMatrix();
-          scale(scaleFactor);
-          rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
-          popMatrix();
-         
-          if (mousePressed == true && UserLoginClicked == false)
-          {
-            UserLoginClicked = true;
-            delay(100);
-          }
-        }
-        
-        displayUsername();
-      }
-      else
-      {
-        if (UserLoginClicked == true)
-        {
-          fill(200);
-          
-          pushMatrix();
-          scale(scaleFactor);
-          rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
-          popMatrix();
-          
-          if (keyPressed)
-          {
-            if (UserLogin.size() < 12)
-            {
-              Creds e = new Creds();
-              
-              if (key == ' ')
-              {
-                println("You cannot have this character "+ key + " in your Username");
-              }
-              else if (key == BACKSPACE && (UserLogin.size() != 0))
-              {
-                UserLogin.remove(UserLogin.get(UserLogin.size()-1));
-                LoginCurX -= 25;
-                delay(100);
-              }
-              else if (key == BACKSPACE && (UserLogin.size() == 0))
-              {
-                println("Can't press backspace when array is empty");
-              }
-              else
-              {
-                e.c = key;
-                e.x = LoginCurX+25;
-                
-                LoginCurX += 25;
-  
-                UserLogin.add(e);
-                delay(100);
-              }
-            }
-          }
-            
-          if (mousePressed == true)
-          {
-            UserLoginClicked = false;
-            delay(100);
-          }
-        }
-        else
-        {
-          fill(255);
-          rect(UserBoxX, UserBoxY, UserBoxWidth, UserBoxHeight);
-        }
-        
-        displayUsername();
-      }
-      
-      fill(255);
-      if ((mouseX > PassBoxX-(PassBoxWidth/2) && mouseX < PassBoxX+(PassBoxWidth/2)) && (mouseY > PassBoxY-(PassBoxHeight/2) && mouseY < PassBoxY+(PassBoxHeight/2)))
-      {
-        fill(255);
-        
-        pushMatrix();
-        scale(scaleFactor);
-        rect(PassBoxX-PassScaleAmountX, PassBoxY-PassScaleAmountY, PassBoxWidth, PassBoxHeight);
-        popMatrix();
-      }
-      else
-      {
-        rect(PassBoxX, PassBoxY, PassBoxWidth, PassBoxHeight);
-      }
+      printLoginBox();
+      printPassBox();
     }
   }
   
@@ -191,5 +102,192 @@ class introScreen
           text(letter, textX+15, 585);
         }
       }
+  }
+  
+  void printLoginBox()
+  {
+    if (((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2))) && UserLoginClicked == false)
+    {
+      if (UserLoginClicked == false)
+      {
+        fill(255);
+          
+        pushMatrix();
+        scale(scaleFactor);
+        rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
+        popMatrix();
+         
+        if (mousePressed == true && UserLoginClicked == false)
+        {
+          UserLoginClicked = true;
+          delay(100);
+        }
+      }
+        
+      displayUsername();
+    }
+    else
+    {
+      if (UserLoginClicked == true)
+      {
+        fill(200);
+          
+        pushMatrix();
+        scale(scaleFactor);
+        rect(UserBoxX-UserScaleAmountX, UserBoxY-UserScaleAmountY, UserBoxWidth, UserBoxHeight);
+        popMatrix();
+          
+        if (keyPressed)
+        {
+          if (UserLogin.size() < 12)
+          {
+            Creds e = new Creds();
+              
+            if (key == ' ')
+            {
+              println("You cannot have this character "+ key + " in your Username");
+            }
+            else if (key == BACKSPACE && (UserLogin.size() != 0))
+            {
+              UserLogin.remove(UserLogin.get(UserLogin.size()-1));
+              LoginCurX -= 25;
+              delay(100);
+            }
+            else if (key == BACKSPACE && (UserLogin.size() == 0))
+            {
+              println("Can't press backspace when array is empty");
+            }
+            else
+            {
+              e.c = key;
+              e.x = LoginCurX+25;
+                
+              LoginCurX += 25;
+  
+              UserLogin.add(e);
+              delay(100);
+            }
+          }
+        }
+            
+        if (mousePressed == true)
+        {
+          UserLoginClicked = false;
+          delay(100);
+        }
+      }
+      else
+      {
+        fill(255);
+        rect(UserBoxX, UserBoxY, UserBoxWidth, UserBoxHeight);
+      }
+        
+      displayUsername();
+    }
+  }
+    
+  
+  void displayPassword()
+  {
+    for (int i = 0; i < UserPass.size(); i++)
+      {
+        Creds Password =  UserPass.get(i);
+  
+        float textX = Password.x;
+        
+        fill(255, 140, 0);
+        textFont(cred);
+        
+        if (UserPassClicked == true || (mouseX > PassBoxX-(PassBoxWidth/2) && mouseX < PassBoxX+(PassBoxWidth/2)) && (mouseY > PassBoxY-(PassBoxHeight/2) && mouseY < PassBoxY+(PassBoxHeight/2)))
+        {
+          textSize(50);
+          text(".", textX, 665);
+        }
+        else
+        {
+          textSize(30);
+          text(".", textX+15, 665);
+        }
+      }
+  }
+  
+  void printPassBox()
+  {
+    fill(255);
+    if ((mouseX > PassBoxX-(PassBoxWidth/2) && mouseX < PassBoxX+(PassBoxWidth/2)) && (mouseY > PassBoxY-(PassBoxHeight/2) && mouseY < PassBoxY+(PassBoxHeight/2)) && UserPassClicked == false)
+    {
+      fill(255);
+        
+      pushMatrix();
+      scale(scaleFactor);
+      rect(PassBoxX-PassScaleAmountX, PassBoxY-PassScaleAmountY, PassBoxWidth, PassBoxHeight);
+      popMatrix();
+      
+      if (mousePressed == true && UserPassClicked == false)
+      {
+        UserPassClicked = true;
+        delay(100);
+      }
+      
+      displayPassword();
+    }
+    else
+    {
+      if (UserPassClicked == true)
+      {
+        fill(200);
+          
+        pushMatrix();
+        scale(scaleFactor);
+        rect(PassBoxX-PassScaleAmountX, PassBoxY-PassScaleAmountY, PassBoxWidth, PassBoxHeight);
+        popMatrix();
+          
+        if (keyPressed)
+        {
+          if (UserPass.size() < 12)
+          {
+            Creds p = new Creds();
+              
+            if (key == ' ')
+            {
+              println("You cannot have this character "+ key + " in your Password");
+            }
+            else if (key == BACKSPACE && (UserPass.size() != 0))
+            {
+              UserPass.remove(UserPass.get(UserPass.size()-1));
+              PassCurX -= 25;
+              delay(100);
+            }
+            else if (key == BACKSPACE && (UserPass.size() == 0))
+            {
+              println("Can't press backspace when array is empty");
+            }
+            else
+            {
+              p.c = key;
+              p.x = PassCurX+25;
+                
+              PassCurX += 25;
+  
+              UserPass.add(p);
+              delay(100);
+            }
+          }
+        }
+            
+        if (mousePressed == true)
+        {
+          UserPassClicked = false;
+          delay(100);
+        }
+      }
+      else
+      {
+        fill(255);
+        rect(PassBoxX, PassBoxY, PassBoxWidth, PassBoxHeight);
+      }
+        
+      displayPassword();
+    }
   }
 }

@@ -19,18 +19,36 @@ class introScreen
   float PassScaleAmountX = PassBoxX-(PassBoxX/scaleFactor);
   float PassScaleAmountY = PassBoxY-(PassBoxY/scaleFactor);
   
+  float EnterBoxX = 1025;
+  float EnterBoxY = 610;
+  float EnterBoxWidth = 150;
+  float EnterBoxHeight = 65;
+  float EnterScaleAmountX = EnterBoxX-(EnterBoxX/scaleFactor);
+  float EnterScaleAmountY = EnterBoxY-(EnterBoxY/scaleFactor);
+  
   ArrayList<Creds> UserLogin = new ArrayList<Creds>();
   ArrayList<Creds> UserPass = new ArrayList<Creds>();
+  ArrayList<User> CurrentUsers = new ArrayList<User>();
+  
+  char[] userArray;
+  char[] passArray;
+  
+  String username;
+  String password;
   
   boolean UserLoginClicked = false;
   boolean UserPassClicked = false;
+  boolean UserEnterClicked = false;
   
-  boolean boxCheck = false;
+  boolean userFound = false;
   
   float LoginCurX = 413;
   float PassCurX = 413;
   
   boolean TabToBox = false;
+  
+  //ascii of CAPS LOCK, will be checked by keyCode
+  final int CAPS_LOCK = 20;
   
   void loadLogin()
   {
@@ -81,6 +99,105 @@ class introScreen
       
       printLoginBox();
       printPassBox();
+      printEnterBox();
+      
+      if (userFound == false && UserEnterClicked == true)
+      {
+        fill(255, 140, 0);
+        textFont(cred);
+        textSize(50);
+        text("User not Found", 915, 500);
+      }
+      
+      if (userFound == true)
+      {
+        state = 1;
+      }
+    }
+  }
+  
+  void printEnterBox()
+  {
+    if (((mouseX > EnterBoxX-(EnterBoxWidth/2) && mouseX < EnterBoxX+(EnterBoxWidth/2)) && (mouseY > EnterBoxY-(EnterBoxHeight/2) && mouseY < EnterBoxY+(EnterBoxHeight/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(EnterBoxX-EnterScaleAmountX, EnterBoxY-EnterScaleAmountY, EnterBoxWidth, EnterBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("LOGIN", EnterBoxX-50, EnterBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        checkCreds();
+        UserEnterClicked = true;
+        delay(100);
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(EnterBoxX, EnterBoxY, EnterBoxWidth, EnterBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("LOGIN", EnterBoxX-45, EnterBoxY+20);
+      
+      if (key == ENTER)
+      {
+        checkCreds();
+        UserEnterClicked = true;
+        delay(100);
+      }
+    }
+  }
+  
+  void checkCreds()
+  {
+    Table users = loadTable("logins.txt", "tsv");
+    
+    userArray = new char [UserLogin.size()];
+    passArray = new char [UserPass.size()];
+    
+    int rowCount = users.getRowCount();
+
+    for (int i = 0; i < UserLogin.size(); i++)
+    {
+      Creds e = UserLogin.get(i);
+      userArray[i] = e.c;
+    }
+      
+    username = String.valueOf(userArray);
+      
+    for (int i = 0; i < UserPass.size(); i++)
+    {
+      Creds e = UserPass.get(i);
+      passArray[i] = e.c;
+    }
+      
+    password = String.valueOf(passArray);
+      
+    for(int i = 0; i < rowCount; i++)
+    {
+      User e = new User(users.getString(i,0), users.getString(i,1));
+      CurrentUsers.add(e);
+
+      if (username.equals(e.username) && password.equals(e.password))
+      {
+        if ("WNSTN".equals(e.username) && "banana".equals(e.password))
+        {
+          e.admin = true;
+        }
+        userFound = true;
+        break;
+      }
     }
   }
   
@@ -147,7 +264,7 @@ class introScreen
           {
             Creds e = new Creds();
               
-            if (key == ' ' || key == ENTER || key == DELETE || keyCode == UP || keyCode == LEFT || keyCode == RIGHT);
+            if (key == ' ' || key == ENTER || key == DELETE || keyCode == UP || keyCode == LEFT || keyCode == RIGHT || keyCode == CAPS_LOCK);
   
             else if (key == BACKSPACE && (UserLogin.size() != 0))
             {
@@ -262,8 +379,8 @@ class introScreen
           {
             Creds p = new Creds();
               
-            if (key == ' ' || key == ENTER || key == DELETE || keyCode == DOWN || keyCode == LEFT || keyCode == RIGHT);
-     
+            if (key == ' ' || key == ENTER || key == DELETE || keyCode == DOWN || keyCode == LEFT || keyCode == RIGHT || keyCode == CAPS_LOCK);
+            
             else if (key == BACKSPACE && (UserPass.size() != 0))
             {
               UserPass.remove(UserPass.get(UserPass.size()-1));

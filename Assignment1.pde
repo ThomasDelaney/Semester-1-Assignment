@@ -23,7 +23,7 @@ void draw()
     timer++;
     introSoundTimer++;
     
-    if (introSoundTimer >= 29)
+    if (introSoundTimer >= 28)
     {
       soundPlaying = false;
       introSoundTimer = 0;
@@ -53,8 +53,6 @@ int timer = 1;
 
 boolean soundPlaying = false;
 int introSoundTimer = 1;
-
-Table users;
 
 SoundFile introSound;
 

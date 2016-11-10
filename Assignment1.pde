@@ -23,7 +23,7 @@ void draw()
     timer++;
     introSoundTimer++;
     
-    if (introSoundTimer >= 28)
+    if (introSoundTimer >= 28 && state == 0)
     {
       soundPlaying = false;
       introSoundTimer = 0;
@@ -40,12 +40,37 @@ void draw()
       soundPlaying = true;
     }
   }
+  
+  if (state == 1)
+  {
+    if (song1Ended == false)
+    {
+      song1Ended = true;
+      introSound.stop();
+    }
+    if (timerReset == false)
+    {
+      timer = 0;
+      timerReset = true;
+    }
+    
+    if (timer < 4)
+    {
+      home.loadInHome();
+    }
+    else
+    {
+      home.drawHome();
+    }
+  }
 }
 
 PImage bg;
 
 Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
+homeScreen home = new homeScreen();
+
 PFont overwatch;
 PFont cred;
 int state = 0;
@@ -53,6 +78,9 @@ int timer = 1;
 
 boolean soundPlaying = false;
 int introSoundTimer = 1;
+boolean timerReset = false;
+
+boolean song1Ended = false;
 
 SoundFile introSound;
 
@@ -67,6 +95,7 @@ void drawBackground()
   color to = color(16, 63, 115);
   
   boolean half = false;
+  
   noStroke();
   
   while (y < height)

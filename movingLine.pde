@@ -6,14 +6,13 @@ class movingLine
   
   movingLine()
   {
-    //this.x = x;
-    //this.y = y;
+    
   }
   
   void drawLine()
   {
     line (x, y, x-30, y);
-    y += 1;
+    y += 2;
     
     if (y >= height)
     {

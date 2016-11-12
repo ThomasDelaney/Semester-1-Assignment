@@ -60,7 +60,7 @@ void draw()
     }
     else
     {
-      home.drawHome();
+      home.drawHome(username);
     }
   }
 }
@@ -84,6 +84,8 @@ boolean song1Ended = false;
 
 SoundFile introSound;
 
+String username;
+String password;
 
 void drawBackground()
 {

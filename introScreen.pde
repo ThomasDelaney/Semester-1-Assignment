@@ -1,5 +1,6 @@
 class introScreen
 { 
+  //dist(mouseX, mouseY, x, y) < s.size / 2);
   color o;
   int inc = 0;
   
@@ -32,9 +33,6 @@ class introScreen
   
   char[] userArray;
   char[] passArray;
-  
-  String username;
-  String password;
   
   boolean UserLoginClicked = false;
   boolean UserPassClicked = false;

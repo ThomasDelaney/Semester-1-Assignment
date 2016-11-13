@@ -1,6 +1,5 @@
 class introScreen
 { 
-  //dist(mouseX, mouseY, x, y) < s.size / 2);
   color o;
   int inc = 0;
   
@@ -27,21 +26,8 @@ class introScreen
   float EnterScaleAmountX = EnterBoxX-(EnterBoxX/scaleFactor);
   float EnterScaleAmountY = EnterBoxY-(EnterBoxY/scaleFactor);
   
-  ArrayList<Creds> UserLogin = new ArrayList<Creds>();
-  ArrayList<Creds> UserPass = new ArrayList<Creds>();
-  ArrayList<User> CurrentUsers = new ArrayList<User>();
-  
   char[] userArray;
   char[] passArray;
-  
-  boolean UserLoginClicked = false;
-  boolean UserPassClicked = false;
-  boolean UserEnterClicked = false;
-  
-  boolean userFound = false;
-  
-  float LoginCurX = 413;
-  float PassCurX = 413;
   
   boolean TabToBox = false;
   
@@ -86,10 +72,12 @@ class introScreen
     }
     else
     {
+      fill(255, 140, 0);
       textFont(overwatch);
       textSize(45);
       text("USERNAME :", 240, 590);
       text("PASSWORD :", 240, 675);
+      athena1.drawAthenaLogo(color(255, 140, 0)); 
       
       strokeWeight(3);
       stroke(255, 140, 0);
@@ -107,7 +95,7 @@ class introScreen
         text("User not Found", 915, 500);
       }
       
-      if (userFound == true)
+      else if (userFound == true)
       {
         state = 1;
       }
@@ -152,6 +140,7 @@ class introScreen
       {
         checkCreds();
         UserEnterClicked = true;
+        key = DELETE;
         delay(100);
       }
     }

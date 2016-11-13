@@ -1,7 +1,8 @@
 class homeScreen
 {
+  int i;
   color o;
-  ArrayList<movingLine> lines = new ArrayList<movingLine>();
+  ArrayList <movingLine> lines = new ArrayList<movingLine>();
   Logo besideUsername;
   
   float lineX = width+1105;
@@ -15,6 +16,15 @@ class homeScreen
   String username;
   
   float curveX = 1060;
+  
+  float scaleFactor = 1.1;
+
+  float LogoutBoxX = 97.5;
+  float LogoutBoxY = 670;
+  float LogoutBoxWidth = 150;
+  float LogoutBoxHeight = 65;
+  float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
+  float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
   
   void drawHome(String username)
   {
@@ -72,6 +82,11 @@ class homeScreen
     textFont(cred);
     textSize(70);
     text(username, curveX-textScaleforUsername, 57);
+    
+    strokeWeight(3);
+    stroke(255, 140, 0);
+    rectMode(CENTER);
+    printLogOutBox();
   }
   
   void loadLines()
@@ -121,6 +136,52 @@ class homeScreen
       text(".", 660, 630);
     }
   }
+  
+void printLogOutBox()
+{
+  if (((mouseX > LogoutBoxX-(LogoutBoxWidth/2) && mouseX < LogoutBoxX+(LogoutBoxWidth/2)) && (mouseY > LogoutBoxY-(LogoutBoxWidth/2) && mouseY < LogoutBoxY+(LogoutBoxWidth/2))))
+  {
+    fill(255);
+          
+    pushMatrix();
+    scale(scaleFactor);
+    rect(LogoutBoxX-LogoutScaleAmountX, LogoutBoxY-LogoutScaleAmountY, LogoutBoxWidth, LogoutBoxHeight);
+    popMatrix();
+        
+    fill(255, 140, 0);
+    textFont(cred);
+        
+    textSize(60);
+    text("Log Out", LogoutBoxX-70, LogoutBoxY+20);
+      
+    if (mousePressed == true)
+    {
+      key = DELETE;
+      username = "";
+      password = "";
+      
+      UserLogin.clear();
+
+      UserPass.clear();
+      
+      LoginCurX = 413;
+      PassCurX = 413;
+      
+      state = 0;
+    }
+  }
+  else
+  {
+    fill(255);
+    rect(LogoutBoxX, LogoutBoxY, LogoutBoxWidth, LogoutBoxHeight);
+    
+    fill(255, 140, 0);
+    textFont(cred);
+    textSize(50);
+    text("Log Out", LogoutBoxX-60, LogoutBoxY+20);
+  }
+}
+
   
   void clock()
   {

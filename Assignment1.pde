@@ -1,84 +1,5 @@
 import processing.sound.*;
 
-void setup()
-{
-  size(1280,720);
-  frameRate(60);
-  
-  drawBackground();
-  bg = loadImage("background.jpg");
-  overwatch = createFont("bignoodletoo.ttf", 150); 
-  cred = createFont("koverwatch.ttf", 150); 
-  introSound = new SoundFile(this, "loadingSound.mp3");
-  theme = new SoundFile(this, "theme.mp3");
-  textFont(overwatch);
-}
- 
-void draw()
-{
-  image(bg, 0, 0);
-  
-  if (frameCount % 60 == 0)
-  {
-    //println(timer);
-    timer++;
-    SoundTimer++;
-    
-    if (SoundTimer >= 28 && state == 0)
-    {
-      soundPlaying = false;
-      SoundTimer = 0;
-    }
-    
-    if (SoundTimer >= 215 && state == 1)
-    {
-      soundPlaying2 = false;
-      SoundTimer = 0;
-    }
-  }
-  
-  if (state == 0)
-  {
-    start.loadLogin();
-    
-    if(soundPlaying == false)
-    {
-      introSound.play();
-      soundPlaying = true;
-    }
-  }
-  
-  if (state == 1)
-  {
-    if (song1Ended == false)
-    {
-      song1Ended = true;
-      introSound.stop();
-    }
-    
-    if(soundPlaying2 == false)
-    {
-      theme.play();
-      soundPlaying2 = true;
-    }
-    
-    if (timerReset == false)
-    {
-      timer = 0;
-      timerReset = true;
-    }
-    
-    if (timer < 4)
-    {
-      home.loadInHome();
-    }
-    else
-    {
-      home.drawHome(username);
-    }
-  }
-}
-
 PImage bg;
 
 Logo athena1 = new Logo (375, 50, 400, true);
@@ -91,17 +12,106 @@ int state = 0;
 int timer = 1;
 
 boolean soundPlaying = false;
-boolean soundPlaying2 = false;
 int SoundTimer = 1;
+
 boolean timerReset = false;
+boolean timerReset2 = false;
 
-boolean song1Ended = false;
-
-SoundFile introSound;
 SoundFile theme;
 
 String username;
 String password;
+
+ArrayList<Creds> UserLogin = new ArrayList<Creds>();
+ArrayList<Creds> UserPass = new ArrayList<Creds>();
+ArrayList<User> CurrentUsers = new ArrayList<User>();
+
+int UserLoginSize;
+int UserPassSize;
+
+boolean UserLoginClicked = false;
+boolean UserPassClicked = false;
+boolean UserEnterClicked = false;
+
+boolean userFound = false;
+
+float LoginCurX = 413;
+float PassCurX = 413;
+
+void setup()
+{
+  size(1280,720);
+  frameRate(60);
+  
+  drawBackground();
+  bg = loadImage("background.jpg");
+  overwatch = createFont("bignoodletoo.ttf", 150); 
+  cred = createFont("koverwatch.ttf", 150); 
+  theme = new SoundFile(this, "theme.mp3");
+  textFont(overwatch);
+}
+ 
+void draw()
+{
+  image(bg, 0, 0);
+  
+  if (frameCount % 60 == 0)
+  {
+    timer++;
+    SoundTimer++;
+    
+    if (soundPlaying == false)
+    {
+      theme.play();
+      soundPlaying = true;
+    }
+    
+    if (SoundTimer >= 215)
+    {
+      soundPlaying = false;
+      SoundTimer = 0;
+    }
+  }
+  
+  if (state == 0)
+  {
+    timerReset2 = false;
+
+    start.loadLogin();
+    
+    if (timerReset == false)
+    {
+      timer = 0;
+      timerReset = true;
+    }
+  }
+  
+  else if (state == 1)
+  {
+    UserLoginClicked = false;
+    UserPassClicked = false;
+    UserEnterClicked = false;
+      
+    userFound = false;
+    
+    timerReset = false;
+    
+    if (timerReset2 == false)
+    {
+      timer = 0;
+      timerReset2 = true;
+    }
+    
+    if (timer < 4)
+    {
+      home.loadInHome();
+    }
+    else
+    {
+      home.drawHome(username);
+    }
+  }
+}
 
 void drawBackground()
 {

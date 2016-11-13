@@ -2,6 +2,7 @@ class homeScreen
 {
   color o;
   ArrayList<movingLine> lines = new ArrayList<movingLine>();
+  Logo besideUsername;
   
   float lineX = width+1105;
   float lineY = 0;
@@ -22,9 +23,6 @@ class homeScreen
     float textScaleforUsername = (username.length()*25);
     
     int i;
-    int sec = second(); 
-    int min = minute(); 
-    int hour = hour();
     
     fill(120, 206, 212);
     textFont(cred);
@@ -39,39 +37,7 @@ class homeScreen
     
     textFont(cred);
     textSize(100);
-  
-    if (hour < 10)
-    {
-      String h = String.valueOf(hour);
-      text("0"+h+":", 25, 85);
-    }
-    else if (hour >= 10)
-    {
-      String h2 = String.valueOf(hour);
-      text(h2+":", 25, 85);
-    }
-    
-    if (min < 10)
-    {  
-      String mS1 = String.valueOf(min);
-      text("0"+mS1+":", 120, 85); 
-    }
-    else if (min >= 10)
-    {
-      String mS2 = String.valueOf(min);
-      text(mS2+":", 120, 85);
-    }
-     
-    if (sec < 10)
-    {
-      s = String.valueOf(sec);
-      text("0"+s, 210, 85);
-    }
-    else if (sec >= 10)
-    {
-      s = String.valueOf(sec);
-      text(s, 215, 85);
-    }
+    clock();
       
     stroke(53, 186, 210);
     strokeWeight(5);
@@ -96,7 +62,13 @@ class homeScreen
     bezier(1130, 518, 1130, 536.2, 1130, 556.4, 1071.7, 560.4);
     bezier(1130, 150, 1132.5, 76.3, 1132.5, 65.6, 1060, 68);
     line(curveX+1, 68, curveX-linexScaleforUsername, 68);
+    bezier(curveX-linexScaleforUsername, 68, (curveX-linexScaleforUsername)-16, 68, (curveX-linexScaleforUsername)-24, 60, (curveX-linexScaleforUsername)-23, 41.5);
+    line((curveX-linexScaleforUsername)-23, 42, (curveX-linexScaleforUsername)-23, 0);
     
+    besideUsername = new Logo((curveX-textScaleforUsername)-40-(username.length()*2), 32.5, 50, false);
+    besideUsername.drawOverwatchLogo(255);
+    
+    fill(255);
     textFont(cred);
     textSize(70);
     text(username, curveX-textScaleforUsername, 57);
@@ -147,6 +119,46 @@ class homeScreen
       text(".", 550, 630);
       text(".", 605, 630);
       text(".", 660, 630);
+    }
+  }
+  
+  void clock()
+  {
+    int sec = second(); 
+    int min = minute(); 
+    int hour = hour();
+    
+    if (hour < 10)
+    {
+      String h = String.valueOf(hour);
+      text("0"+h+":", 25, 85);
+    }
+    else if (hour >= 10)
+    {
+      String h2 = String.valueOf(hour);
+      text(h2+":", 25, 85);
+    }
+    
+    if (min < 10)
+    {  
+      String mS1 = String.valueOf(min);
+      text("0"+mS1+":", 120, 85); 
+    }
+    else if (min >= 10)
+    {
+      String mS2 = String.valueOf(min);
+      text(mS2+":", 120, 85);
+    }
+     
+    if (sec < 10)
+    {
+      String s = String.valueOf(sec);
+      text("0"+s, 215, 85);
+    }
+    else if (sec >= 10)
+    {
+      String s = String.valueOf(sec);
+      text(s, 215, 85);
     }
   }
 }

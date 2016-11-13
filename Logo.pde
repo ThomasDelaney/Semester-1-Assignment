@@ -4,7 +4,6 @@ class Logo
   float y;
   int size;
   float logoThicknessConst = 7.69230769231;
-  color c;
   boolean withText = false; 
   
   //default constructor
@@ -25,7 +24,7 @@ class Logo
     this.withText = withText;
   }
 
-  void drawOverwatchLogo()
+  void drawOverwatchLogo(color c)
   {
     noFill();
     stroke(c);

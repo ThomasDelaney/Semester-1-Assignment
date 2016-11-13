@@ -10,6 +10,7 @@ void setup()
   overwatch = createFont("bignoodletoo.ttf", 150); 
   cred = createFont("koverwatch.ttf", 150); 
   introSound = new SoundFile(this, "loadingSound.mp3");
+  theme = new SoundFile(this, "theme.mp3");
   textFont(overwatch);
 }
  
@@ -21,12 +22,18 @@ void draw()
   {
     //println(timer);
     timer++;
-    introSoundTimer++;
+    SoundTimer++;
     
-    if (introSoundTimer >= 28 && state == 0)
+    if (SoundTimer >= 28 && state == 0)
     {
       soundPlaying = false;
-      introSoundTimer = 0;
+      SoundTimer = 0;
+    }
+    
+    if (SoundTimer >= 215 && state == 1)
+    {
+      soundPlaying2 = false;
+      SoundTimer = 0;
     }
   }
   
@@ -48,6 +55,13 @@ void draw()
       song1Ended = true;
       introSound.stop();
     }
+    
+    if(soundPlaying2 == false)
+    {
+      theme.play();
+      soundPlaying2 = true;
+    }
+    
     if (timerReset == false)
     {
       timer = 0;
@@ -77,12 +91,14 @@ int state = 0;
 int timer = 1;
 
 boolean soundPlaying = false;
-int introSoundTimer = 1;
+boolean soundPlaying2 = false;
+int SoundTimer = 1;
 boolean timerReset = false;
 
 boolean song1Ended = false;
 
 SoundFile introSound;
+SoundFile theme;
 
 String username;
 String password;

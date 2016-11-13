@@ -12,10 +12,12 @@ void setup()
 PFont overwatch;
 PFont cred;
 PImage bg;
-String username = "a";
+String username = "WNSTN";
 
 float linexScaleforUsername = (username.length()*30)+55;
 float textScaleforUsername = (username.length()*25);
+
+float curveX = 1060;
 
 void draw()
 {
@@ -33,8 +35,6 @@ void draw()
   int min = minute(); 
   int hour = hour();
   
-  float curveX = 1060;
-  
   String s = String.valueOf(d);
   text(s+" / ", 85, 125);
   s = String.valueOf(m);
@@ -48,12 +48,12 @@ void draw()
   if (hour < 10)
   {
     String h = String.valueOf(hour);
-    text("0"+h+":", 25, 85);
+    text("0"+h+":", 30, 85);
   }
   else
   {
     String h2 = String.valueOf(hour);
-    text(h2+":", 25, 85);
+    text(h2+":", 30, 85);
   }
   
   
@@ -75,8 +75,8 @@ void draw()
   }
   else if (sec >= 10)
   {
-    String sS1 = String.valueOf(sec);
-    text(sS1, 210, 85);
+    String sS2 = String.valueOf(sec);
+    text(sS2, 210, 85);
   }
   
   
@@ -89,13 +89,84 @@ void draw()
   noFill();
   bezier(1130, 518, 1130, 536.2, 1130, 556.4, 1071.7, 560.4);
   bezier(1130, 150, 1132.5, 76.3, 1132.5, 65.6, 1060, 68);
-  line(curveX+1, 68, curveX-linexScaleforUsername, 68);
+  line(curveX+1, 68, (curveX-linexScaleforUsername)-1, 68);
+  bezier(curveX-linexScaleforUsername, 68, (curveX-linexScaleforUsername)-16, 68, (curveX-linexScaleforUsername)-24, 60, (curveX-linexScaleforUsername)-23, 41.5);
+  line((curveX-linexScaleforUsername)-23, 42, (curveX-linexScaleforUsername)-23, 0);
   
   textFont(cred);
   textSize(70);
   text(username, curveX-textScaleforUsername, 57);
+  drawOverwatchLogo();
+  
+  
+  
+  
+  
   
   textSize(70);
   text("a", width/2, height/2);
   line(width/2+2, height/2+5, width/2+24, height/2+5);
+}
+
+float size = 50;
+color c = 255;
+float x = (curveX-textScaleforUsername)-40-(username.length()*2);
+float y = 32.5;
+float logoThicknessConst = 7.69230769231;
+
+void drawOverwatchLogo()
+{
+  noFill();
+  stroke(c);
+  strokeWeight(size/logoThicknessConst);
+  strokeCap(SQUARE);
+  arc(x, y, size, size, -QUARTER_PI, PI+QUARTER_PI);
+  stroke(255, 165, 0);
+  arc(x, y, size, size, PI+QUARTER_PI+(QUARTER_PI/8), PI+HALF_PI+QUARTER_PI-(QUARTER_PI/8));
+   
+  fill(c);
+  noStroke();
+    
+  beginShape();
+    
+  vertex(x-convertSize(7), y+convertSize(25));
+  vertex(x-convertSize(85), y+convertSize(105));
+  vertex(x-convertSize(110), y+convertSize(80));
+  vertex(x-convertSize(40), y+convertSize(15));
+  vertex(x-convertSize(8), y-convertSize(85));
+  vertex(x-convertSize(7), y+convertSize(25));
+    
+  endShape(CLOSE);
+    
+  beginShape();
+    
+  vertex(x+convertSize(7), y+convertSize(25));
+  vertex(x+convertSize(85), y+convertSize(105));
+  vertex(x+convertSize(110), y+convertSize(80));
+  vertex(x+convertSize(40), y+convertSize(15));
+  vertex(x+convertSize(8), y-convertSize(85));
+  vertex(x+convertSize(7), y+convertSize(25));
+
+  endShape(CLOSE);
+}
+
+float scaleFactor = 1.1;
+
+float LogoutBoxX = 615;
+float LogoutBoxY = 575;
+float LogoutBoxWidth = 350;
+float LogoutBoxHeight = 65;
+float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
+float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
+
+void printLogOutBox()
+{
+  
+}
+
+float convertSize(float constant)
+{
+  float num = 300/constant;
+  constant = size /num; 
+  return constant;
 }

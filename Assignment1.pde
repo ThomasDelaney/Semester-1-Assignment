@@ -5,6 +5,7 @@ PImage bg;
 Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
 homeScreen home = new homeScreen();
+createUser registerUser = new createUser();
 
 PFont overwatch;
 PFont cred;
@@ -22,8 +23,15 @@ SoundFile theme;
 String username;
 String password;
 
+String N_username;
+String N_password;
+
 ArrayList<Creds> UserLogin = new ArrayList<Creds>();
 ArrayList<Creds> UserPass = new ArrayList<Creds>();
+
+ArrayList<Creds> NewUserLogin = new ArrayList<Creds>();
+ArrayList<Creds> NewUserPass = new ArrayList<Creds>();
+
 ArrayList<User> CurrentUsers = new ArrayList<User>();
 
 int UserLoginSize;
@@ -32,6 +40,11 @@ int UserPassSize;
 boolean UserLoginClicked = false;
 boolean UserPassClicked = false;
 boolean UserEnterClicked = false;
+boolean CreateClicked = false;
+
+boolean UserLoginClickedC = false;
+boolean UserPassClickedC = false;
+boolean UserEnterClickedC = false;
 
 boolean userFound = false;
 
@@ -75,6 +88,10 @@ void draw()
   
   if (state == 0)
   {
+    UserLoginClickedC = false;
+    UserPassClickedC = false;
+    UserEnterClickedC = false;
+    
     timerReset2 = false;
 
     start.loadLogin();
@@ -110,6 +127,14 @@ void draw()
     {
       home.drawHome(username);
     }
+  }
+  else if (state == 2)
+  {
+    UserLoginClicked = false;
+    UserPassClicked = false;
+    UserEnterClicked = false;
+    
+    registerUser.registerScreen();
   }
 }
 

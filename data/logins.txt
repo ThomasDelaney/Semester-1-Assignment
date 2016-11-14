@@ -1,2 +1,3 @@
 WNSTN	banana
 a	a
+thomas	thomas

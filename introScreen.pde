@@ -26,6 +26,13 @@ class introScreen
   float EnterScaleAmountX = EnterBoxX-(EnterBoxX/scaleFactor);
   float EnterScaleAmountY = EnterBoxY-(EnterBoxY/scaleFactor);
   
+  float CreateBoxX = 1180;
+  float CreateBoxY = 50;
+  float CreateBoxWidth = 150;
+  float CreateBoxHeight = 65;
+  float CreateScaleAmountX = CreateBoxX-(CreateBoxX/scaleFactor);
+  float CreateScaleAmountY = CreateBoxY-(CreateBoxY/scaleFactor);
+  
   char[] userArray;
   char[] passArray;
   
@@ -86,6 +93,7 @@ class introScreen
       printLoginBox();
       printPassBox();
       printEnterBox();
+      printCreateBox();
       
       if (userFound == false && UserEnterClicked == true)
       {
@@ -143,6 +151,42 @@ class introScreen
         key = DELETE;
         delay(100);
       }
+    }
+  }
+  
+  void printCreateBox()
+  {
+    if (((mouseX > CreateBoxX-(CreateBoxWidth/2) && mouseX < CreateBoxX+(CreateBoxWidth/2)) && (mouseY > CreateBoxY-(CreateBoxHeight/2) && mouseY < CreateBoxY+(CreateBoxHeight/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(CreateBoxX-CreateScaleAmountX, CreateBoxY-CreateScaleAmountY, CreateBoxWidth, CreateBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("Register", CreateBoxX-76, CreateBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        CreateClicked = true;
+        state = 2;
+        delay(100);
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(CreateBoxX, CreateBoxY, CreateBoxWidth, CreateBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("Register", CreateBoxX-65, CreateBoxY+17.5);
     }
   }
   

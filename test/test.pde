@@ -98,8 +98,10 @@ void draw()
   text(username, curveX-textScaleforUsername, 57);
   drawOverwatchLogo();
   
-  
-  
+  strokeWeight(3);
+  stroke(255, 140, 0);
+  rectMode(CENTER);
+  printLogOutBox();
   
   
   
@@ -152,16 +154,49 @@ void drawOverwatchLogo()
 
 float scaleFactor = 1.1;
 
-float LogoutBoxX = 615;
-float LogoutBoxY = 575;
-float LogoutBoxWidth = 350;
+float LogoutBoxX = 97.5;
+float LogoutBoxY = 670;
+float LogoutBoxWidth = 150;
 float LogoutBoxHeight = 65;
 float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
 float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
 
+boolean LogoutClicked = false;
+
 void printLogOutBox()
 {
-  
+    if (((mouseX > LogoutBoxX-(LogoutBoxWidth/2) && mouseX < LogoutBoxX+(LogoutBoxWidth/2)) && (mouseY > LogoutBoxY-(LogoutBoxWidth/2) && mouseY < LogoutBoxY+(LogoutBoxWidth/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(LogoutBoxX-LogoutScaleAmountX, LogoutBoxY-LogoutScaleAmountY, LogoutBoxWidth, LogoutBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("Log Out", LogoutBoxX-70, LogoutBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        LogoutClicked = true;
+        delay(100);
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(LogoutBoxX, LogoutBoxY, LogoutBoxWidth, LogoutBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("Log Out", LogoutBoxX-60, LogoutBoxY+20);
+    }
+
 }
 
 float convertSize(float constant)

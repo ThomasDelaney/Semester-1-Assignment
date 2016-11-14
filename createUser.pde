@@ -16,6 +16,13 @@ class createUser
   float PassScaleAmountX = PassBoxX-(PassBoxX/scaleFactor);
   float PassScaleAmountY = PassBoxY-(PassBoxY/scaleFactor);
   
+  float EnterBoxX = 1025;
+  float EnterBoxY = 450;
+  float EnterBoxWidth = 150;
+  float EnterBoxHeight = 65;
+  float EnterScaleAmountX = EnterBoxX-(EnterBoxX/scaleFactor);
+  float EnterScaleAmountY = EnterBoxY-(EnterBoxY/scaleFactor);
+  
   char[] NewUserArray;
   char[] NewPassArray;
   
@@ -43,6 +50,136 @@ class createUser
       
       printLoginBox(); 
       printPassBox();
+      printEnterBox();
+      
+      if (userFoundC == true && UserEnterClickedC == true)
+      {
+        fill(255, 140, 0);
+        textFont(cred);
+        textSize(50);
+        text("User Already Exists", 890, 550);
+      }
+  }
+  
+  void addUser()
+  {
+    try
+    {
+      newUser = new FileWriter(sketchPath()+"\\"+"data"+"\\"+"logins.txt", true);
+      newUser.write("\r\n");
+      newUser.write(N_username);
+      newUser.write("\t");
+      newUser.write(N_password);
+    }
+    catch (IOException e) 
+    {
+      println("Error!");
+      e.printStackTrace();
+    }
+    finally
+    {
+      if (newUser != null) 
+      {
+        try 
+        {
+          newUser.close();
+        } 
+        catch (IOException e) 
+        {
+          println("Error while closing the file");
+        }
+      }
+    }
+  }
+  
+  void printEnterBox()
+  {
+    if (((mouseX > EnterBoxX-(EnterBoxWidth/2) && mouseX < EnterBoxX+(EnterBoxWidth/2)) && (mouseY > EnterBoxY-(EnterBoxHeight/2) && mouseY < EnterBoxY+(EnterBoxHeight/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(EnterBoxX-EnterScaleAmountX, EnterBoxY-EnterScaleAmountY, EnterBoxWidth, EnterBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("Create", EnterBoxX-60, EnterBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        checkCreds();
+        UserEnterClickedC = true;
+        delay(100);
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(EnterBoxX, EnterBoxY, EnterBoxWidth, EnterBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("Create", EnterBoxX-50, EnterBoxY+20);
+      
+      if (key == ENTER)
+      {
+        checkCreds();
+        UserEnterClickedC = true;
+        key = DELETE;
+        delay(100);
+      }
+    }
+  }
+  
+  void checkCreds()
+  {
+    userFoundC = false;
+    
+    Table users = loadTable("logins.txt", "tsv");
+    
+    NewUserArray = new char [NewUserLogin.size()];
+    NewPassArray = new char [NewUserPass.size()];
+    
+    int rowCount = users.getRowCount();
+
+    for (int i = 0; i < NewUserLogin.size(); i++)
+    {
+      Creds e = NewUserLogin.get(i);
+      NewUserArray[i] = e.c;
+    }
+      
+    N_username = String.valueOf(NewUserArray);
+      
+    for (int i = 0; i < NewUserPass.size(); i++)
+    {
+      Creds e = NewUserPass.get(i);
+      NewPassArray[i] = e.c;
+    }
+      
+    N_password = String.valueOf(NewPassArray);
+      
+    for(int i = 0; i < rowCount; i++)
+    {
+      User e = new User(users.getString(i,0), users.getString(i,1));
+      CurrentUsers.add(e);
+
+      if (N_username.equals(e.username) && N_password.equals(e.password))
+      {
+        userFoundC = true;
+        break;
+      }
+    }
+    
+    if (userFoundC == false)
+    {
+      addUser();
+      state = 0;
+    }
   }
   
   void displayUsername()
@@ -113,7 +250,7 @@ class createUser
             else if (key == BACKSPACE && (NewUserLogin.size() != 0))
             {
               NewUserLogin.remove(NewUserLogin.get(NewUserLogin.size()-1));
-              LoginCurX -= 25;
+              LoginCurX2 -= 25;
               delay(100);
             }
             
@@ -133,9 +270,9 @@ class createUser
             else
             {
               e.c = key;
-              e.x = LoginCurX+25;
+              e.x = LoginCurX2+25;
                 
-              LoginCurX += 25;
+              LoginCurX2 += 25;
   
               NewUserLogin.add(e);
               delay(100);
@@ -229,7 +366,7 @@ class createUser
             else if (key == BACKSPACE && (NewUserPass.size() != 0))
             {
               NewUserPass.remove(NewUserPass.get(NewUserPass.size()-1));
-              PassCurX -= 25;
+              PassCurX2 -= 25;
               delay(100);
             }
             
@@ -247,9 +384,9 @@ class createUser
             else
             {
               p.c = key;
-              p.x = PassCurX+25;
+              p.x = PassCurX2+25;
                 
-              PassCurX += 25;
+              PassCurX2 += 25;
   
               NewUserPass.add(p);
               delay(100);
@@ -282,7 +419,7 @@ class createUser
       if (key == BACKSPACE && (NewUserPass.size() != 0))
       {
         NewUserPass.remove(NewUserPass.get(NewUserPass.size()-1));
-        PassCurX -= 25;
+        PassCurX2 -= 25;
         delay(100);
       }
             
@@ -304,7 +441,7 @@ class createUser
       if (key == BACKSPACE && (NewUserLogin.size() != 0))
       {
         NewUserLogin.remove(NewUserLogin.get(NewUserLogin.size()-1));
-        LoginCurX -= 25;
+        LoginCurX2 -= 25;
         delay(100);
       }
             

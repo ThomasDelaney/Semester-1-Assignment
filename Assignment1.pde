@@ -1,4 +1,5 @@
 import processing.sound.*;
+import java.io.FileWriter;
 
 PImage bg;
 
@@ -47,9 +48,16 @@ boolean UserPassClickedC = false;
 boolean UserEnterClickedC = false;
 
 boolean userFound = false;
+boolean userFoundC = false;
 
 float LoginCurX = 413;
 float PassCurX = 413;
+
+float LoginCurX2 = 413;
+float PassCurX2 = 413;
+
+FileWriter newUser = null;
+
 
 void setup()
 {
@@ -88,9 +96,21 @@ void draw()
   
   if (state == 0)
   {
+    N_username = "";
+    N_password = "";
+      
+    NewUserLogin.clear();
+
+    NewUserPass.clear();
+    
+    LoginCurX2 = 413;
+    PassCurX2 = 413;
+   
     UserLoginClickedC = false;
     UserPassClickedC = false;
     UserEnterClickedC = false;
+    
+    userFoundC = false;
     
     timerReset2 = false;
 
@@ -104,7 +124,7 @@ void draw()
   }
   
   else if (state == 1)
-  {
+  { 
     UserLoginClicked = false;
     UserPassClicked = false;
     UserEnterClicked = false;
@@ -133,6 +153,8 @@ void draw()
     UserLoginClicked = false;
     UserPassClicked = false;
     UserEnterClicked = false;
+    
+    userFound = false;
     
     registerUser.registerScreen();
   }

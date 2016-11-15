@@ -36,6 +36,8 @@ ArrayList<Creds> NewUserPass = new ArrayList<Creds>();
 
 ArrayList<User> CurrentUsers = new ArrayList<User>();
 
+ArrayList<Hero> heroes = new ArrayList<Hero>();
+
 int UserLoginSize;
 int UserPassSize;
 
@@ -50,6 +52,8 @@ boolean UserEnterClickedC = false;
 
 boolean userFound = false;
 boolean userFoundC = false;
+
+boolean heroesLoaded = false;
 
 float LoginCurX = 413;
 float PassCurX = 413;
@@ -78,6 +82,7 @@ void setup()
 void draw()
 {
   image(bg, 0, 0);
+  //println(mouseX+" "+mouseY);
   
   if (frameCount % 60 == 0)
   {
@@ -114,6 +119,8 @@ void draw()
     UserEnterClickedC = false;
     
     userFoundC = false;
+    
+    heroesLoaded = false;
     
     timerReset2 = false;
 

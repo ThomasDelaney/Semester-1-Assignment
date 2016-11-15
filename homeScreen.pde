@@ -28,6 +28,8 @@ class homeScreen
   
   float homeMapX = 12.5;
   float homeMapY = 135;
+  float homeMapWidth = 1025;
+  float homeMapHeight = 570;
   
   void drawHome(String username)
   {
@@ -94,8 +96,18 @@ class homeScreen
     rectMode(CORNER);
     stroke(255);
     noFill();
-    rect(homeMapX, homeMapY, 1025, 570);
+    rect(homeMapX, homeMapY, homeMapWidth, homeMapHeight);
     image(worldHome, homeMapX-10, homeMapY+20);
+    
+    if (heroesLoaded == false)
+    {
+      loadHeroes();
+      heroesLoaded = true;
+    }
+    
+    stroke(255, 0, 0);
+    fill(255, 0, 0);
+    printHeroLocations();
   }
   
   void loadLines()
@@ -115,6 +127,29 @@ class homeScreen
         lines.add(e);
       }
       linesLoaded = true;
+    }
+  }
+  
+  void loadHeroes()
+  {
+    Table HeroTable = loadTable("heroes.txt", "tsv");
+  
+    int rowCount = HeroTable.getRowCount();
+  
+    for(int i = 0; i < rowCount; i++)
+    {
+      Hero e = new Hero(HeroTable.getString(i,0), HeroTable.getString(i,1), HeroTable.getFloat(i,2), HeroTable.getFloat(i,3), HeroTable.getString(i,4), HeroTable.getString(i,5), HeroTable.getString(i,6));
+      e.mapGPS(homeMapX, homeMapY, homeMapWidth, homeMapHeight);
+      heroes.add(e);
+    }
+  }
+  
+  void printHeroLocations()
+  {
+    for (int i = 0; i < heroes.size(); i++)
+    {
+      Hero e = heroes.get(i);
+      ellipse(e.x, e.y, 3, 3);
     }
   }
   

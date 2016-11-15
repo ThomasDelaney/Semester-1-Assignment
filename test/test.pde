@@ -108,6 +108,11 @@ void draw()
   textSize(70);
   text("a", width/2, height/2);
   line(width/2+2, height/2+5, width/2+24, height/2+5);
+  
+  rectMode(CORNER);
+  stroke(255);
+  noFill();
+  rect(20, 135, 1025, 570);
 }
 
 float size = 50;

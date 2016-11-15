@@ -1,4 +1,4 @@
-import processing.sound.*;
+//import processing.sound.*;
 import java.io.FileWriter;
 
 PImage bg;
@@ -19,7 +19,7 @@ int SoundTimer = 1;
 boolean timerReset = false;
 boolean timerReset2 = false;
 
-SoundFile theme;
+//SoundFile theme;
 
 String username;
 String password;
@@ -68,7 +68,7 @@ void setup()
   bg = loadImage("background.jpg");
   overwatch = createFont("bignoodletoo.ttf", 150); 
   cred = createFont("koverwatch.ttf", 150); 
-  theme = new SoundFile(this, "theme.mp3");
+  //theme = new SoundFile(this, "theme.mp3");
   textFont(overwatch);
 }
  
@@ -83,7 +83,7 @@ void draw()
     
     if (soundPlaying == false)
     {
-      theme.play();
+      //theme.play();
       soundPlaying = true;
     }
     

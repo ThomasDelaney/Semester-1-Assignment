@@ -17,11 +17,18 @@ class createUser
   float PassScaleAmountY = PassBoxY-(PassBoxY/scaleFactor);
   
   float EnterBoxX = 1025;
-  float EnterBoxY = 450;
+  float EnterBoxY = 400;
   float EnterBoxWidth = 150;
   float EnterBoxHeight = 65;
   float EnterScaleAmountX = EnterBoxX-(EnterBoxX/scaleFactor);
   float EnterScaleAmountY = EnterBoxY-(EnterBoxY/scaleFactor);
+  
+  float HomeBoxX = 1025;
+  float HomeBoxY = 500;
+  float HomeBoxWidth = 150;
+  float HomeBoxHeight = 65;
+  float HomeScaleAmountX = HomeBoxX-(HomeBoxX/scaleFactor);
+  float HomeScaleAmountY = HomeBoxY-(HomeBoxY/scaleFactor);
   
   char[] NewUserArray;
   char[] NewPassArray;
@@ -51,6 +58,7 @@ class createUser
       printLoginBox(); 
       printPassBox();
       printEnterBox();
+      printHomeBox();
       
       if (userFoundC == true && UserEnterClickedC == true)
       {
@@ -59,6 +67,50 @@ class createUser
         textSize(50);
         text("User Already Exists", 890, 550);
       }
+  }
+  
+  void printHomeBox()
+  {
+    if (((mouseX > HomeBoxX-(HomeBoxWidth/2) && mouseX < HomeBoxX+(HomeBoxWidth/2)) && (mouseY > HomeBoxY-(HomeBoxHeight/2) && mouseY < HomeBoxY+(HomeBoxHeight/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(HomeBoxX-HomeScaleAmountX, HomeBoxY-HomeScaleAmountY, HomeBoxWidth, HomeBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("Return", HomeBoxX-60, HomeBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        username = "";
+        password = "";
+        
+        UserLogin.clear();
+        UserPass.clear();
+        
+        LoginCurX = 413;
+        PassCurX = 413;
+        
+        state = 0;
+        delay(100);
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(HomeBoxX, HomeBoxY, HomeBoxWidth, HomeBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("Return", HomeBoxX-50, HomeBoxY+20);
+    }
   }
   
   void addUser()
@@ -175,7 +227,7 @@ class createUser
       }
     }
     
-    if (userFoundC == false)
+    if (userFoundC == false && (!N_username.isEmpty() || !N_username.isEmpty()))
     {
       addUser();
       state = 0;

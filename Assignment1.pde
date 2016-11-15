@@ -2,6 +2,7 @@
 import java.io.FileWriter;
 
 PImage bg;
+PImage worldHome;
 
 Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
@@ -66,6 +67,8 @@ void setup()
   
   drawBackground();
   bg = loadImage("background.jpg");
+  worldHome = loadImage("world.png");
+  worldHome.resize(1025, 570);
   overwatch = createFont("bignoodletoo.ttf", 150); 
   cred = createFont("koverwatch.ttf", 150); 
   //theme = new SoundFile(this, "theme.mp3");

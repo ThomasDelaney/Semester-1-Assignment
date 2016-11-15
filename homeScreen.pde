@@ -19,12 +19,15 @@ class homeScreen
   
   float scaleFactor = 1.1;
 
-  float LogoutBoxX = 97.5;
-  float LogoutBoxY = 670;
+  float LogoutBoxX = 400;
+  float LogoutBoxY = 50;
   float LogoutBoxWidth = 150;
   float LogoutBoxHeight = 65;
   float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
   float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
+  
+  float homeMapX = 12.5;
+  float homeMapY = 135;
   
   void drawHome(String username)
   {
@@ -87,6 +90,12 @@ class homeScreen
     stroke(255, 140, 0);
     rectMode(CENTER);
     printLogOutBox();
+    
+    rectMode(CORNER);
+    stroke(255);
+    noFill();
+    rect(homeMapX, homeMapY, 1025, 570);
+    image(worldHome, homeMapX-10, homeMapY+20);
   }
   
   void loadLines()

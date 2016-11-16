@@ -31,6 +31,13 @@ class homeScreen
   float homeMapWidth = 1025;
   float homeMapHeight = 570;
   
+  String curHeroName;
+  float curHeroX;
+  float curHeroY;
+  
+  boolean mV = false;
+  
+  
   void drawHome(String username)
   {
     this.username = username;
@@ -105,8 +112,7 @@ class homeScreen
       heroesLoaded = true;
     }
     
-    stroke(255, 0, 0);
-    fill(255, 0, 0);
+    noStroke();
     printHeroLocations();
   }
   
@@ -149,7 +155,49 @@ class homeScreen
     for (int i = 0; i < heroes.size(); i++)
     {
       Hero e = heroes.get(i);
-      ellipse(e.x, e.y, 3, 3);
+      if (dist(mouseX, mouseY, e.x, e.y) < 12 / 2)
+      {
+        fill(255, 255, 0);
+        ellipse(e.x, e.y, 12, 12);
+        
+        if (mousePressed)
+        {
+          heroSelect = true;
+          curHeroName = e.name;
+          curHeroX = e.x+10;
+          curHeroY = e.y+6.5;
+          mV = false;
+        }
+        else
+        {
+          mV = true;
+        }
+      }
+      else
+      {
+        if (heroSelect == true)
+        {
+           if (mousePressed && mV == true)
+           {
+             heroSelect = false;
+           }
+           
+          fill(255);
+          textSize(20);
+          text(curHeroName, curHeroX, curHeroY);
+      
+          fill(255, 255, 0);
+          ellipse(curHeroX-10, curHeroY-6.5, 12, 12);
+          
+          fill(255, 0, 0);
+          ellipse(e.x, e.y, 8, 8);
+        }
+        else
+        {
+          fill(255, 0, 0);
+          ellipse(e.x, e.y, 8, 8);
+        }
+      }
     }
   }
   

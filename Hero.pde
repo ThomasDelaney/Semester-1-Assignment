@@ -24,7 +24,7 @@ class Hero
   void mapGPS(float boxX, float boxY, float boxWidth, float boxHeight)
   {
     x = map(longit, -180, 180, boxX, boxX+boxWidth);
-    y = map(lat, 85, -85, boxY, boxY+boxHeight);
+    y = map(lat, -85, 85, boxY, boxY+boxHeight);
   }
   
   String toString()

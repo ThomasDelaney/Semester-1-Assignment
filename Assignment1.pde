@@ -54,6 +54,7 @@ boolean userFound = false;
 boolean userFoundC = false;
 
 boolean heroesLoaded = false;
+boolean heroSelect = false;
 
 float LoginCurX = 413;
 float PassCurX = 413;
@@ -121,6 +122,7 @@ void draw()
     userFoundC = false;
     
     heroesLoaded = false;
+    heroSelect = false;
     
     timerReset2 = false;
 

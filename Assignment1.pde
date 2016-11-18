@@ -8,6 +8,7 @@ Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
 homeScreen home = new homeScreen();
 createUser registerUser = new createUser();
+heroPage heroList = new heroPage();
 
 PFont overwatch;
 PFont cred;
@@ -38,6 +39,8 @@ ArrayList<User> CurrentUsers = new ArrayList<User>();
 
 ArrayList<Hero> heroes = new ArrayList<Hero>();
 
+ArrayList<heroBox> heroBoxes = new ArrayList<heroBox>();
+
 int UserLoginSize;
 int UserPassSize;
 
@@ -61,6 +64,9 @@ float PassCurX = 413;
 
 float LoginCurX2 = 413;
 float PassCurX2 = 413;
+
+float GenBoxX = 170;
+float GenBoxY = 60;
 
 FileWriter newUser = null;
 
@@ -169,6 +175,10 @@ void draw()
     userFound = false;
     
     registerUser.registerScreen();
+  }
+  else if (state == 3)
+  {
+    heroList.displayDB();
   }
 }
 

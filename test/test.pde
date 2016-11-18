@@ -23,64 +23,6 @@ void draw()
 {
   image(bg, 0, 0);
   
-  fill(120, 206, 212);
-  textFont(cred);
-  textSize(30);
-  
-  int d = day();    
-  int m = month(); 
-  int y = year(); 
-
-  int sec = second(); 
-  int min = minute(); 
-  int hour = hour();
-  
-  String s = String.valueOf(d);
-  text(s+" / ", 85, 125);
-  s = String.valueOf(m);
-  text(s+" / ", 125, 125); 
-  s = String.valueOf(y);
-  text(s, 160, 125);
-  
-  textFont(cred);
-  textSize(100);
-  
-  if (hour < 10)
-  {
-    String h = String.valueOf(hour);
-    text("0"+h+":", 30, 85);
-  }
-  else
-  {
-    String h2 = String.valueOf(hour);
-    text(h2+":", 30, 85);
-  }
-  
-  
-  if (min < 10)
-  {  
-    String mS1 = String.valueOf(min);
-    text("0"+mS1+":", 120, 85); 
-  }
-  else
-  {
-    String mS2 = String.valueOf(min);
-    text(mS2+":", 120, 85);
-  }
-   
-  if (sec < 10)
-  {
-    String sS1 = String.valueOf(sec);
-    text("0"+sS1, 210, 85);
-  }
-  else if (sec >= 10)
-  {
-    String sS2 = String.valueOf(sec);
-    text(sS2, 210, 85);
-  }
-  
-  
-  
   stroke(120, 206, 212);
   strokeWeight(5);
   strokeCap(SQUARE);
@@ -96,77 +38,33 @@ void draw()
   textFont(cred);
   textSize(70);
   text(username, curveX-textScaleforUsername, 57);
-  drawOverwatchLogo();
   
   strokeWeight(3);
   stroke(255, 140, 0);
   rectMode(CENTER);
   printLogOutBox();
-  
-  
-  
-  textSize(70);
-  text("a", width/2, height/2);
-  line(width/2+2, height/2+5, width/2+24, height/2+5);
-  
-  rectMode(CORNER);
-  stroke(255);
-  noFill();
-  rect(20, 135, 1025, 570);
-}
-
-float size = 50;
-color c = 255;
-float x = (curveX-textScaleforUsername)-40-(username.length()*2);
-float y = 32.5;
-float logoThicknessConst = 7.69230769231;
-
-void drawOverwatchLogo()
-{
-  noFill();
-  stroke(c);
-  strokeWeight(size/logoThicknessConst);
-  strokeCap(SQUARE);
-  arc(x, y, size, size, -QUARTER_PI, PI+QUARTER_PI);
-  stroke(255, 165, 0);
-  arc(x, y, size, size, PI+QUARTER_PI+(QUARTER_PI/8), PI+HALF_PI+QUARTER_PI-(QUARTER_PI/8));
-   
-  fill(c);
-  noStroke();
-    
-  beginShape();
-    
-  vertex(x-convertSize(7), y+convertSize(25));
-  vertex(x-convertSize(85), y+convertSize(105));
-  vertex(x-convertSize(110), y+convertSize(80));
-  vertex(x-convertSize(40), y+convertSize(15));
-  vertex(x-convertSize(8), y-convertSize(85));
-  vertex(x-convertSize(7), y+convertSize(25));
-    
-  endShape(CLOSE);
-    
-  beginShape();
-    
-  vertex(x+convertSize(7), y+convertSize(25));
-  vertex(x+convertSize(85), y+convertSize(105));
-  vertex(x+convertSize(110), y+convertSize(80));
-  vertex(x+convertSize(40), y+convertSize(15));
-  vertex(x+convertSize(8), y-convertSize(85));
-  vertex(x+convertSize(7), y+convertSize(25));
-
-  endShape(CLOSE);
+  printHeroBox();
 }
 
 float scaleFactor = 1.1;
 
-float LogoutBoxX = 97.5;
-float LogoutBoxY = 670;
+float LogoutBoxX = 400;
+float LogoutBoxY = 50;
 float LogoutBoxWidth = 150;
 float LogoutBoxHeight = 65;
 float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
 float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
 
+
+float HeroBoxX = 650;
+float HeroBoxY = 50;
+float HeroBoxWidth = 300;
+float HeroBoxHeight = 65;
+float HeroScaleAmountX = HeroBoxX-(HeroBoxX/scaleFactor);
+float HeroScaleAmountY = HeroBoxY-(HeroBoxY/scaleFactor);
+
 boolean LogoutClicked = false;
+boolean HeroBoxClicked = false;
 
 void printLogOutBox()
 {
@@ -201,12 +99,39 @@ void printLogOutBox()
       textSize(50);
       text("Log Out", LogoutBoxX-60, LogoutBoxY+20);
     }
-
 }
 
-float convertSize(float constant)
+void printHeroBox()
 {
-  float num = 300/constant;
-  constant = size /num; 
-  return constant;
+    if (((mouseX > HeroBoxX-(HeroBoxWidth/2) && mouseX < HeroBoxX+(HeroBoxWidth/2)) && (mouseY > HeroBoxY-(HeroBoxWidth/2) && mouseY < HeroBoxY+(HeroBoxWidth/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(HeroBoxX-HeroScaleAmountX, HeroBoxY-HeroScaleAmountY, HeroBoxWidth, HeroBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("Hero Database", HeroBoxX-135, HeroBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        HeroBoxClicked = true;
+        delay(100);
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(HeroBoxX, HeroBoxY, HeroBoxWidth, HeroBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("Hero Database", HeroBoxX-115, HeroBoxY+20);
+    }
 }

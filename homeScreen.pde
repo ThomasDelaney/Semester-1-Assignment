@@ -26,6 +26,13 @@ class homeScreen
   float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
   float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
   
+  float HeroBoxX = 675;
+  float HeroBoxY = 50;
+  float HeroBoxWidth = 300;
+  float HeroBoxHeight = 65;
+  float HeroScaleAmountX = HeroBoxX-(HeroBoxX/scaleFactor);
+  float HeroScaleAmountY = HeroBoxY-(HeroBoxY/scaleFactor);
+  
   float homeMapX = 12.5;
   float homeMapY = 135;
   float homeMapWidth = 1025;
@@ -114,6 +121,46 @@ class homeScreen
     
     noStroke();
     printHeroLocations();
+    
+    strokeWeight(3);
+    stroke(255, 140, 0);
+    rectMode(CENTER);
+    printHeroBox();
+  }
+  
+  void printHeroBox()
+  {
+    if (((mouseX > HeroBoxX-(HeroBoxWidth/2) && mouseX < HeroBoxX+(HeroBoxWidth/2)) && (mouseY > HeroBoxY-(HeroBoxHeight/2) && mouseY < HeroBoxY+(HeroBoxHeight/2))))
+    {
+      fill(255);
+          
+      pushMatrix();
+      scale(scaleFactor);
+      rect(HeroBoxX-HeroScaleAmountX, HeroBoxY-HeroScaleAmountY, HeroBoxWidth, HeroBoxHeight);
+      popMatrix();
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      textSize(60);
+      text("Hero Database", HeroBoxX-135, HeroBoxY+20);
+      
+      if (mousePressed == true)
+      {
+        delay(100);
+        state = 3;
+      }
+    }
+    else
+    {
+      fill(255);
+      rect(HeroBoxX, HeroBoxY, HeroBoxWidth, HeroBoxHeight);
+      
+      fill(255, 140, 0);
+      textFont(cred);
+      textSize(50);
+      text("Hero Database", HeroBoxX-115, HeroBoxY+20);
+    }
   }
   
   void loadLines()
@@ -231,7 +278,7 @@ class homeScreen
   
 void printLogOutBox()
 {
-  if (((mouseX > LogoutBoxX-(LogoutBoxWidth/2) && mouseX < LogoutBoxX+(LogoutBoxWidth/2)) && (mouseY > LogoutBoxY-(LogoutBoxWidth/2) && mouseY < LogoutBoxY+(LogoutBoxWidth/2))))
+  if (((mouseX > LogoutBoxX-(LogoutBoxWidth/2) && mouseX < LogoutBoxX+(LogoutBoxWidth/2)) && (mouseY > LogoutBoxY-(LogoutBoxHeight/2) && mouseY < LogoutBoxY+(LogoutBoxHeight/2))))
   {
     fill(255);
           

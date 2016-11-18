@@ -204,7 +204,7 @@ class createUser
       Creds e = NewUserLogin.get(i);
       NewUserArray[i] = e.c;
     }
-      
+ 
     N_username = String.valueOf(NewUserArray);
       
     for (int i = 0; i < NewUserPass.size(); i++)
@@ -227,7 +227,7 @@ class createUser
       }
     }
     
-    if (userFoundC == false && (!N_username.isEmpty() || !N_username.isEmpty()))
+    if (userFoundC == false && (!N_username.isEmpty() && !N_password.isEmpty()))
     {
       addUser();
       state = 0;

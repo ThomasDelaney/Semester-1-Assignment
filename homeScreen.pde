@@ -7,7 +7,6 @@ class homeScreen
   
   float lineX = width+1105;
   float lineY = 0;
-  boolean linesLoaded = false;
     
   int d = day();    
   int m = month(); 
@@ -41,9 +40,6 @@ class homeScreen
   String curHeroName;
   float curHeroX;
   float curHeroY;
-  
-  boolean mV = false;
-  
   
   void drawHome(String username)
   {

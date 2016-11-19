@@ -8,7 +8,7 @@ Logo athena1 = new Logo (375, 50, 400, true);
 introScreen start = new introScreen();
 homeScreen home = new homeScreen();
 createUser registerUser = new createUser();
-heroPage heroList = new heroPage();
+heroDatabase heroList = new heroDatabase();
 
 PFont overwatch;
 PFont cred;
@@ -58,6 +58,8 @@ boolean userFoundC = false;
 
 boolean heroesLoaded = false;
 boolean heroSelect = false;
+boolean mV = false;
+boolean linesLoaded = false;
 
 float LoginCurX = 413;
 float PassCurX = 413;
@@ -129,6 +131,8 @@ void draw()
     
     heroesLoaded = false;
     heroSelect = false;
+    mV = false;
+    linesLoaded = false;
     
     timerReset2 = false;
 
@@ -178,6 +182,10 @@ void draw()
   }
   else if (state == 3)
   {
+    linesLoaded = false;
+    mV = false;
+    heroSelect = false;
+    heroesLoaded = false;
     heroList.displayDB();
   }
 }

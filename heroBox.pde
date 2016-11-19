@@ -23,6 +23,9 @@ class heroBox
   
   void checkBox()
   {
+    strokeWeight(3);
+    stroke(255, 140, 0);
+    rectMode(CENTER);
     if (((mouseX > BoxX-(BoxWidth/2) && mouseX < BoxX+(BoxWidth/2)) && (mouseY > BoxY-(BoxHeight/2) && mouseY < BoxY+(BoxHeight/2))))
     {
       fill(255);

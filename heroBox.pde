@@ -28,6 +28,7 @@ class heroBox
     rectMode(CENTER);
     if (((mouseX > BoxX-(BoxWidth/2) && mouseX < BoxX+(BoxWidth/2)) && (mouseY > BoxY-(BoxHeight/2) && mouseY < BoxY+(BoxHeight/2))))
     {
+      heroIndex = h.index;
       fill(255);
           
       pushMatrix();
@@ -44,6 +45,7 @@ class heroBox
       if (mousePressed == true)
       {
         delay(100);
+        state = 4;
       }
     }
     else

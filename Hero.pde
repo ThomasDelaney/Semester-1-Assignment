@@ -1,5 +1,6 @@
 class Hero
 {
+  int index;
   String name;
   String birthplace;
   float lat; //lattitude
@@ -10,7 +11,7 @@ class Hero
   float x;
   float y;
   
-  Hero(String name, String birthplace, float lat, float longit, String member, String alive, String base)
+  Hero(String name, String birthplace, float lat, float longit, String member, String alive, String base, int index)
   {
     this.name = name;
     this.birthplace = birthplace;
@@ -19,7 +20,8 @@ class Hero
     this.member = member;
     this.alive = alive;
     this.base = base;
-  }
+    this.index = index;
+   }
   
   void mapGPS(float boxX, float boxY, float boxWidth, float boxHeight)
   {

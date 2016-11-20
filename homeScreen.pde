@@ -174,7 +174,7 @@ class homeScreen
   
     for(int i = 0; i < rowCount; i++)
     {
-      Hero e = new Hero(HeroTable.getString(i,0), HeroTable.getString(i,1), HeroTable.getFloat(i,2), HeroTable.getFloat(i,3), HeroTable.getString(i,4), HeroTable.getString(i,5), HeroTable.getString(i,6));
+      Hero e = new Hero(HeroTable.getString(i,0), HeroTable.getString(i,1), HeroTable.getFloat(i,2), HeroTable.getFloat(i,3), HeroTable.getString(i,4), HeroTable.getString(i,5), HeroTable.getString(i,6), i);
       e.mapGPS(homeMapX, homeMapY, homeMapWidth, homeMapHeight);
       heroes.add(e);
     }

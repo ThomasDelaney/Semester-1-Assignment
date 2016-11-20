@@ -9,11 +9,14 @@ introScreen start = new introScreen();
 homeScreen home = new homeScreen();
 createUser registerUser = new createUser();
 heroDatabase heroList = new heroDatabase();
+heroPage h = new heroPage();
 
 PFont overwatch;
 PFont cred;
 int state = 0;
 int timer = 1;
+
+int heroIndex;
 
 boolean soundPlaying = false;
 int SoundTimer = 1;
@@ -187,6 +190,12 @@ void draw()
     mV = false;
     heroSelect = false;
     heroList.displayDB();
+    //println(heroIndex);
+  }
+  else if (state == 4)
+  {
+    h.printPage(heroIndex);
+    h.printReturnBox();
   }
 }
 

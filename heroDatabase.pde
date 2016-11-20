@@ -37,14 +37,10 @@ class heroDatabase
   {
     GenBoxX = 170;
     GenBoxY = 60;
-    
-    Table HeroTable = loadTable("heroes.txt", "tsv");
   
-    int rowCount = HeroTable.getRowCount();
-  
-    for(int i = 0; i < rowCount; i++)
+    for(int i = 0; i < heroes.size(); i++)
     {
-      Hero e = new Hero(HeroTable.getString(i,0), HeroTable.getString(i,1), HeroTable.getFloat(i,2), HeroTable.getFloat(i,3), HeroTable.getString(i,4), HeroTable.getString(i,5), HeroTable.getString(i,6));
+      Hero e = heroes.get(i) ;
    
       heroBox h = new heroBox(e);
       

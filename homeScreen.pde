@@ -18,16 +18,16 @@ class homeScreen
   
   float scaleFactor = 1.1;
 
-  float LogoutBoxX = 400;
-  float LogoutBoxY = 50;
+  float LogoutBoxX = 107;
+  float LogoutBoxY = 657.5;
   float LogoutBoxWidth = 150;
   float LogoutBoxHeight = 65;
   float LogoutScaleAmountX = LogoutBoxX-(LogoutBoxX/scaleFactor);
   float LogoutScaleAmountY = LogoutBoxY-(LogoutBoxY/scaleFactor);
   
-  float HeroBoxX = 675;
-  float HeroBoxY = 50;
-  float HeroBoxWidth = 300;
+  float HeroBoxX = 445;
+  float HeroBoxY = 47;
+  float HeroBoxWidth = 280;
   float HeroBoxHeight = 65;
   float HeroScaleAmountX = HeroBoxX-(HeroBoxX/scaleFactor);
   float HeroScaleAmountY = HeroBoxY-(HeroBoxY/scaleFactor);
@@ -54,11 +54,11 @@ class homeScreen
     textSize(30);
     
     String s = String.valueOf(d);
-    text(s+" / ", 85, 125);
+    text(s+" / ", 75, 125);
     s = String.valueOf(m);
-    text(s+" / ", 125, 125); 
+    text(s+" / ", 115, 125); 
     s = String.valueOf(y);
-    text(s, 160, 125);
+    text(s, 150, 125);
     
     textFont(cred);
     textSize(100);
@@ -69,8 +69,6 @@ class homeScreen
     strokeCap(SQUARE);
     
     line(width-50, 0, width-50, height);
-    
-    loadLines();
     
     for (i = 0; i < 60; i++)
     {
@@ -108,12 +106,6 @@ class homeScreen
     noFill();
     rect(homeMapX, homeMapY, homeMapWidth, homeMapHeight);
     image(worldHome, homeMapX-10, homeMapY+20);
-    
-    if (heroesLoaded == false)
-    {
-      loadHeroes();
-      heroesLoaded = true;
-    }
     
     noStroke();
     printHeroLocations();
@@ -162,20 +154,15 @@ class homeScreen
   void loadLines()
   {
     int i;
-    
-    if (linesLoaded == false)
+    for (i = 0; i < 60; i++)
     {
-      for (i = 0; i < 60; i++)
-      {
-        movingLine e = new movingLine();
+      movingLine e = new movingLine();
             
-        lineY += 30;
+      lineY += 30;
         
-        e.setY(lineY);
-        e.setX(lineX);
-        lines.add(e);
-      }
-      linesLoaded = true;
+      e.setY(lineY);
+      e.setX(lineX);
+      lines.add(e);
     }
   }
   
@@ -327,34 +314,34 @@ void printLogOutBox()
     if (hour < 10)
     {
       String h = String.valueOf(hour);
-      text("0"+h+":", 25, 85);
+      text("0"+h+":", 15, 85);
     }
     else if (hour >= 10)
     {
       String h2 = String.valueOf(hour);
-      text(h2+":", 25, 85);
+      text(h2+":", 15, 85);
     }
     
     if (min < 10)
     {  
       String mS1 = String.valueOf(min);
-      text("0"+mS1+":", 120, 85); 
+      text("0"+mS1+":", 110, 85); 
     }
     else if (min >= 10)
     {
       String mS2 = String.valueOf(min);
-      text(mS2+":", 120, 85);
+      text(mS2+":", 110, 85);
     }
      
     if (sec < 10)
     {
       String s = String.valueOf(sec);
-      text("0"+s, 215, 85);
+      text("0"+s, 205, 85);
     }
     else if (sec >= 10)
     {
       String s = String.valueOf(sec);
-      text(s, 215, 85);
+      text(s, 205, 85);
     }
   }
 }

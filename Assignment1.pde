@@ -41,6 +41,8 @@ ArrayList<Hero> heroes = new ArrayList<Hero>();
 
 ArrayList<heroBox> heroBoxes = new ArrayList<heroBox>();
 
+ArrayList<heroPage> pages = new ArrayList<heroPage>();
+
 int UserLoginSize;
 int UserPassSize;
 
@@ -56,10 +58,8 @@ boolean UserEnterClickedC = false;
 boolean userFound = false;
 boolean userFoundC = false;
 
-boolean heroesLoaded = false;
 boolean heroSelect = false;
 boolean mV = false;
-boolean linesLoaded = false;
 
 float LoginCurX = 413;
 float PassCurX = 413;
@@ -86,6 +86,10 @@ void setup()
   cred = createFont("koverwatch.ttf", 150); 
   //theme = new SoundFile(this, "theme.mp3");
   textFont(overwatch);
+  
+  home.loadHeroes();
+  home.loadLines();
+  heroList.loadDB();
 }
  
 void draw()
@@ -129,10 +133,8 @@ void draw()
     
     userFoundC = false;
     
-    heroesLoaded = false;
     heroSelect = false;
     mV = false;
-    linesLoaded = false;
     
     timerReset2 = false;
 
@@ -182,10 +184,8 @@ void draw()
   }
   else if (state == 3)
   {
-    linesLoaded = false;
     mV = false;
     heroSelect = false;
-    heroesLoaded = false;
     heroList.displayDB();
   }
 }

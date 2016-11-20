@@ -13,7 +13,6 @@ class heroDatabase
   
   void displayDB()
   {
-    loadDB();
     OW = new Logo(1092.5, 400, 275, false);
     OW.drawOverwatchLogo(255);
     
@@ -21,7 +20,19 @@ class heroDatabase
     stroke(255, 140, 0);
     rectMode(CENTER);
     printReturnBox();
+    
+    printDB();
   }
+  
+  void printDB()
+  {
+    for(int i = 0; i < heroBoxes.size(); i++)
+    {
+      heroBox h = heroBoxes.get(i);
+      h.checkBox();
+    }
+  }
+  
   void loadDB()
   {
     GenBoxX = 170;
@@ -51,11 +62,10 @@ class heroDatabase
       }
       
       heroBoxes.add(h);
-      h.checkBox();
     }
   }
   
-    void printReturnBox()
+  void printReturnBox()
   {
     if (((mouseX > ReturnBoxX-(ReturnBoxWidth/2) && mouseX < ReturnBoxX+(ReturnBoxWidth/2)) && (mouseY > ReturnBoxY-(ReturnBoxHeight/2) && mouseY < ReturnBoxY+(ReturnBoxHeight/2))))
     {

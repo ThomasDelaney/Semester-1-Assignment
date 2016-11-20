@@ -20,4 +20,4 @@ Lucio	Brazil	36.087715	-75.5122	true	true	Madacascar
 Mercy	Switzerland	-42.94737	-15.804871	true	true	Gibraltar
 Symmetra	India	-14.614037	49.521942	true	true	Madacascar
 Zenyatta	Nepal	-18.192986	56.195114	true	true	Madacascar
-Solder76	USA	-29.526314	-134.86829	false	false	LosAngeles	
+Soldier76	USA	-29.526314	-134.86829	false	false	LosAngeles	

@@ -1,5 +1,6 @@
 class Hero
 {
+  PImage portrait;
   int index;
   String name;
   String birthplace;
@@ -21,6 +22,8 @@ class Hero
     this.alive = alive;
     this.base = base;
     this.index = index;
+    portrait = loadImage(name+".png");
+    portrait.resize(325, 425);
    }
   
   void mapGPS(float boxX, float boxY, float boxWidth, float boxHeight)

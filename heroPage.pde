@@ -48,6 +48,8 @@ class heroPage
       
     y += 100;
     text("Overwatch Base: "+h.base, x, y);
+    
+    image(h.portrait, 450, 50);
   }
   
   void printReturnBox()

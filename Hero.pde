@@ -12,6 +12,8 @@ class Hero
   float x;
   float y;
   
+  ArrayList<sineGraph> waves = new ArrayList<sineGraph>();
+  
   Hero(String name, String birthplace, float lat, float longit, String member, String alive, String base, int index)
   {
     this.name = name;
@@ -24,6 +26,15 @@ class Hero
     this.index = index;
     portrait = loadImage(name+".png");
     portrait.resize(325, 425);
+    
+    sineGraph w1 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
+    sineGraph w2 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
+    sineGraph w3 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
+    sineGraph w4 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
+    waves.add(w1);
+    waves.add(w2);
+    waves.add(w3);
+    waves.add(w4);
    }
   
   void mapGPS(float boxX, float boxY, float boxWidth, float boxHeight)

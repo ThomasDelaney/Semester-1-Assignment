@@ -195,6 +195,7 @@ void draw()
   else if (state == 4)
   {
     h.printPage(heroIndex);
+    stroke(255, 140, 0);
     h.printReturnBox();
   }
 }

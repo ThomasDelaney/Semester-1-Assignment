@@ -4,11 +4,6 @@ class movingLine
   float y;
   float inc = 1;
   
-  movingLine()
-  {
-    
-  }
-  
   void drawLine()
   {
     line (x, y, x-30, y);

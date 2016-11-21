@@ -12,6 +12,12 @@ class heroPage
   float ReturnScaleAmountX = ReturnBoxX-(ReturnBoxX/scaleFactor);
   float ReturnScaleAmountY = ReturnBoxY-(ReturnBoxY/scaleFactor);
   
+  int borderX = 825;
+  float borderY = 200;
+  
+  float lineX = 825;
+  float lineY = 200/1.625;
+  
   void printPage(int index)
   {  
     y = 50;
@@ -50,6 +56,27 @@ class heroPage
     text("Overwatch Base: "+h.base, x, y);
     
     image(h.portrait, 450, 50);
+    
+    sineGraph w1 = h.waves.get(0);
+    w1.update();
+    w1.render();
+    
+    sineGraph w2 = h.waves.get(1);
+    w2.update();
+    w2.render();
+    
+    sineGraph w3 = h.waves.get(2);
+    w3.update();
+    w3.render();
+    
+    sineGraph w4 = h.waves.get(3);
+    w4.update();
+    w4.render();
+    
+    stroke(255);
+    strokeWeight(3);
+    line(borderX, borderY, borderX+400, borderY);
+    line(borderX, borderY, borderX, borderY-150);
   }
   
   void printReturnBox()

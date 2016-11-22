@@ -18,6 +18,8 @@ class heroPage
   float lineX = 825;
   float lineY = 200/1.625;
   
+  pieChart p1 = new pieChart();
+  
   void printPage(int index)
   {  
     y = 50;
@@ -72,6 +74,8 @@ class heroPage
     sineGraph w4 = h.waves.get(3);
     w4.update();
     w4.render();
+    
+    p1.drawChart();
     
     stroke(255);
     strokeWeight(3);

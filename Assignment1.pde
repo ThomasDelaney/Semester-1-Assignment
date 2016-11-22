@@ -80,6 +80,7 @@ void setup()
 {
   size(1280,720);
   frameRate(60);
+  smooth();
   
   drawBackground();
   bg = loadImage("background.jpg");

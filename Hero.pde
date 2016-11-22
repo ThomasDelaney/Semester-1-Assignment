@@ -27,10 +27,10 @@ class Hero
     portrait = loadImage(name+".png");
     portrait.resize(325, 425);
     
-    sineGraph w1 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
-    sineGraph w2 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
-    sineGraph w3 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
-    sineGraph w4 = new sineGraph(color(random(0, 255), random(0, 255), random(0, 255)), random(10, 50));
+    sineGraph w1 = new sineGraph(color(255, 0, 0), random(10, 50), random(0.01, 0.1));
+    sineGraph w2 = new sineGraph(color(0, 255, 0), random(10, 50), random(0.01, 0.1));
+    sineGraph w3 = new sineGraph(color(0, 0, 255), random(10, 50), random(0.01, 0.1));
+    sineGraph w4 = new sineGraph(color(255, 255, 0), random(10, 50), random(0.01, 0.1));
     waves.add(w1);
     waves.add(w2);
     waves.add(w3);

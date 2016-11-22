@@ -77,6 +77,21 @@ class heroPage
     strokeWeight(3);
     line(borderX, borderY, borderX+400, borderY);
     line(borderX, borderY, borderX, borderY-150);
+    
+    fill(255, 0, 0);
+    textFont(overwatch);
+    textSize(20);
+    text("Blood Pressure", borderX, borderY+30);
+    
+    fill(0, 255, 0);
+    text("Breathing Rate", borderX+110, borderY+30);
+    
+    fill(0, 0, 255);
+    text("Brain Activity", borderX+220, borderY+30);
+    
+    fill(255, 255, 0);
+    text("Power", borderX+330, borderY+30);
+    
   }
   
   void printReturnBox()

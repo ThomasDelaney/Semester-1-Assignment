@@ -16,9 +16,11 @@ class sineGraph
   float lengthOfWave = 300;
   float dx;
   float[] values;
+  float inc;
   
-  sineGraph(color c, float heightOfWave)
+  sineGraph(color c, float heightOfWave, float inc)
   {
+    this.inc = inc;
     this.c = c;
     this.heightOfWave = heightOfWave;
     dx = (TWO_PI / lengthOfWave) * xspacing;
@@ -27,7 +29,7 @@ class sineGraph
   
   void update()
   {
-    theta += 0.05;
+    theta += inc;
     
     float x = theta;
     for (int i = 0; i < values.length; i++)

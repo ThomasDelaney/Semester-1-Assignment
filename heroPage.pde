@@ -76,6 +76,7 @@ class heroPage
     w4.render();
     
     p1.drawChart();
+    h.b.drawBars();
     
     stroke(255);
     strokeWeight(3);
@@ -106,6 +107,7 @@ class heroPage
           
       pushMatrix();
       scale(scaleFactor);
+      rectMode(CENTER);
       rect(ReturnBoxX-ReturnScaleAmountX, ReturnBoxY-ReturnScaleAmountY, ReturnBoxWidth, ReturnBoxHeight);
       popMatrix();
         
@@ -124,6 +126,7 @@ class heroPage
     else
     {
       fill(255);
+      rectMode(CENTER);
       rect(ReturnBoxX, ReturnBoxY, ReturnBoxWidth, ReturnBoxHeight);
       
       fill(255, 140, 0);

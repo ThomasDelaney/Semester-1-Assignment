@@ -16,6 +16,8 @@ class Hero
   ArrayList<sineGraph> waves = new ArrayList<sineGraph>();
   ArrayList<pieChart> pies = new ArrayList<pieChart>();
   
+  barChart b = new barChart();
+  
   Hero(String name, String birthplace, float lat, float longit, String member, String alive, String base, int index)
   {
     this.name = name;

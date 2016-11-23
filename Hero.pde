@@ -1,6 +1,7 @@
 class Hero
 {
   PImage portrait;
+  SoundFile greeting;
   int index;
   String name;
   String birthplace;
@@ -27,6 +28,7 @@ class Hero
     this.index = index;
     portrait = loadImage(name+".png");
     portrait.resize(325, 425);
+    greeting = new SoundFile(Assignment1.this, name+".mp3");
     
     float h;
     float angle;

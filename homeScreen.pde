@@ -196,6 +196,8 @@ class homeScreen
           curHeroName = e.name;
           curHeroX = e.x+10;
           curHeroY = e.y+6.5;
+          e.greeting.play();
+          delay(50);
           mV = false;
         }
         else

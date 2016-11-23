@@ -26,10 +26,6 @@ boolean timerReset2 = false;
 
 SoundFile theme;
 
-//hero soundfiles
-SoundFile Genji;
-
-
 String username;
 String password;
 
@@ -93,6 +89,7 @@ void setup()
   overwatch = createFont("bignoodletoo.ttf", 150); 
   cred = createFont("koverwatch.ttf", 150); 
   theme = new SoundFile(this, "theme.mp3");
+  theme.amp(0.7);
   textFont(overwatch);
   
   home.loadHeroes();
@@ -112,7 +109,7 @@ void draw()
     
     if (soundPlaying == false)
     {
-      //theme.play();
+      theme.play();
       soundPlaying = true;
     }
     

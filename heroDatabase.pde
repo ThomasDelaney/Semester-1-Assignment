@@ -88,7 +88,7 @@ class heroDatabase
     {
       fill(255);
       rect(ReturnBoxX, ReturnBoxY, ReturnBoxWidth, ReturnBoxHeight);
-      
+   
       fill(255, 140, 0);
       textFont(cred);
       textSize(50);

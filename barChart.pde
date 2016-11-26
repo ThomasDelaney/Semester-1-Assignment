@@ -49,15 +49,23 @@ class barChart
     
     fill(255, 0, 0);
     rect(barLineX, barLineY-40, barWidth1, 32);
+    fill(255);
+    text("B.P", barWidth1+45, barLineY-15);
     
     fill(0, 255, 0);
     rect(barLineX, barLineY-90, barWidth2, 32);
+    fill(255);
+    text("B.A", barWidth2+45, barLineY-65);
     
     fill(0, 0, 255);
     rect(barLineX, barLineY-140, barWidth3, 32);
+    fill(255);
+    text("B.R", barWidth3+45, barLineY-115);
     
     fill(255, 255, 0);
     rect(barLineX, barLineY-190, barWidth4, 32);
+    fill(255);
+    text("Power", barWidth4+45, barLineY-165);
     
     strokeWeight(3);
     stroke(255);

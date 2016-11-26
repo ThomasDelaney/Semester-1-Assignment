@@ -41,6 +41,9 @@ class homeScreen
   float curHeroX;
   float curHeroY;
   
+  float theta = 2;
+  float lastAngle = 0;
+  
   void drawHome(String username)
   {
     this.username = username;
@@ -114,6 +117,13 @@ class homeScreen
     stroke(255, 140, 0);
     rectMode(CENTER);
     printHeroBox();
+    
+    lastAngle += theta/20;
+    
+    if (lastAngle >= 2*PI)
+    {
+      lastAngle = 0;
+    }
   }
   
   void printHeroBox()
@@ -187,8 +197,10 @@ class homeScreen
       Hero e = heroes.get(i);
       if (dist(mouseX, mouseY, e.x, e.y) < 12 / 2)
       {
+        noStroke();
         fill(255, 255, 0);
         ellipse(e.x, e.y, 12, 12);
+
         
         if (mousePressed)
         {
@@ -214,20 +226,36 @@ class homeScreen
              heroSelect = false;
            }
            
+          noStroke(); 
           fill(255);
           textSize(20);
           text(curHeroName, curHeroX, curHeroY);
       
+          
           fill(255, 255, 0);
           ellipse(curHeroX-10, curHeroY-6.5, 12, 12);
           
           fill(255, 0, 0);
           ellipse(e.x, e.y, 8, 8);
+          
+          noFill();
+          strokeCap(SQUARE);
+          strokeWeight(4);
+          stroke(255, 0, 0);
+          arc(e.x, e.y, 16, 16, lastAngle,lastAngle+theta);
+          noStroke();
         }
         else
         {
+          noStroke();
           fill(255, 0, 0);
           ellipse(e.x, e.y, 8, 8);
+          noFill();
+          strokeCap(SQUARE);
+          strokeWeight(4);
+          stroke(255, 0, 0);
+          arc(e.x, e.y, 16, 16, lastAngle,lastAngle+theta);
+          noStroke();
         }
       }
     }

@@ -23,20 +23,20 @@ class pieChart
     float x2 = (centerX-20) + sin((lastAngle+theta) + (theta * 0.35f) + HALF_PI) * radius/3.5;      
     float y2 = (centerY+10) - cos((lastAngle+theta) + (theta * 0.35f) + HALF_PI) * radius/3.5;
     
-    fill(0, 255, 0);
+    fill(255, 255, 0);
     arc(centerX, centerY, radius, radius, lastAngle+theta, lastAngle+(theta+1.7), PIE);
     
     float x3 = (centerX-10) + sin((lastAngle+(theta+1.7)) + (theta * 0.2f) + HALF_PI) * radius/3.25;      
     float y3 = (centerY) - cos((lastAngle+(theta+1.7)) + (theta * 0.2f) + HALF_PI) * radius/3.25;
     
-    fill(0, 0, 255);
+    fill(0, 255, 0);
     arc(centerX, centerY, radius, radius, lastAngle+(theta+1.7), lastAngle+(theta+2.7), PIE);
     
         
     float x4 = (centerX) + sin((lastAngle+(theta+2.7)) + (theta * 0.4f) + HALF_PI) * radius/3.5;      
     float y4 = (centerY) - cos((lastAngle+(theta+2.7)) + (theta * 0.4f) + HALF_PI) * radius/3.5;
     
-    fill(255, 255, 0);
+    fill(0, 0, 255);
     arc(centerX, centerY, radius, radius, lastAngle+(theta+2.7),lastAngle+(theta+4.3), PIE);
     
     fill(255);

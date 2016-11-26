@@ -14,14 +14,4 @@ class movingLine
       y = 0;
     }
   }
-  
-  void setX(float x)
-  {
-    this.x = x;
-  }
-  
-  void setY(float y)
-  {
-    this.y = y;
-  }
 }

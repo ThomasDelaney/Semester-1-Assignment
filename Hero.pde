@@ -14,7 +14,6 @@ class Hero
   float y;
   
   ArrayList<sineGraph> waves = new ArrayList<sineGraph>();
-  ArrayList<pieChart> pies = new ArrayList<pieChart>();
   
   barChart b = new barChart();
   

@@ -2,7 +2,6 @@ class User
 {
   String username;
   String password;
-  boolean admin;
   
   User(String username, String password)
   {

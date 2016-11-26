@@ -102,7 +102,6 @@ void setup()
 void draw()
 {
   image(bg, 0, 0);
-  //println(mouseX+" "+mouseY);
   
   if (frameCount % 60 == 0)
   {
@@ -111,7 +110,7 @@ void draw()
     
     if (soundPlaying == false)
     {
-      theme.play();
+      //theme.play();
       soundPlaying = true;
     }
     

@@ -230,10 +230,6 @@ class introScreen
 
       if (username.equals(e.username) && password.equals(e.password))
       {
-        if ("WNSTN".equals(e.username) && "banana".equals(e.password))
-        {
-          e.admin = true;
-        }
         userFound = true;
         break;
       }
@@ -243,25 +239,25 @@ class introScreen
   void displayUsername()
   {
     for (int i = 0; i < UserLogin.size(); i++)
+    {
+      Creds Username =  UserLogin.get(i);
+      char letter = Username.c;
+      float textX = Username.x;
+        
+      fill(255, 140, 0);
+      textFont(cred);
+        
+      if (UserLoginClicked == true || ((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2))))
       {
-        Creds Username =  UserLogin.get(i);
-        char letter = Username.c;
-        float textX = Username.x;
-        
-        fill(255, 140, 0);
-        textFont(cred);
-        
-        if (UserLoginClicked == true || ((mouseX > UserBoxX-(UserBoxWidth/2) && mouseX < UserBoxX+(UserBoxWidth/2)) && (mouseY > UserBoxY-(UserBoxHeight/2) && mouseY < UserBoxY+(UserBoxHeight/2))))
-        {
-          textSize(50);
-          text(letter, textX, 593);
-        }
-        else
-        {
-          textSize(30);
-          text(letter, textX+15, 585);
-        }
+        textSize(50);
+        text(letter, textX, 593);
       }
+      else
+      {
+        textSize(30);
+        text(letter, textX+15, 585);
+      }
+    }
   }
   
   void printLoginBox()

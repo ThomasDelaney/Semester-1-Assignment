@@ -170,8 +170,8 @@ class homeScreen
             
       lineY += 30;
         
-      e.setY(lineY);
-      e.setX(lineX);
+      e.y = lineY;
+      e.x = lineX;
       lines.add(e);
     }
   }

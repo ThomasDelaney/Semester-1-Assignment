@@ -19,7 +19,7 @@ class introScreen
   float PassScaleAmountX = PassBoxX-(PassBoxX/scaleFactor);
   float PassScaleAmountY = PassBoxY-(PassBoxY/scaleFactor);
   
-  float EnterBoxX = 1025;
+  float EnterBoxX = 1035;
   float EnterBoxY = 610;
   float EnterBoxWidth = 150;
   float EnterBoxHeight = 65;
@@ -106,6 +106,14 @@ class introScreen
       else if (userFound == true)
       {
         state = 1;
+      }
+      
+      if (Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK) == true)
+      {
+        fill(255, 140, 0);
+        textFont(cred);
+        textSize(50);
+        text("Caps lock is on", 915, 555);
       }
     }
   }

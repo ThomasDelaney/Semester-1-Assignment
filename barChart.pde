@@ -18,6 +18,7 @@ class barChart
   void drawBars()
   {
     barWidth1 = checkBarWidth(barWidth1, barGoal1);
+  
     if (barWidth1 == barGoal1)
     {
       barGoal1 = (int)random(1, 800);
@@ -44,9 +45,9 @@ class barChart
     
    
     noStroke();
-    fill(255, 0, 0);
     rectMode(CORNER);
     
+    fill(255, 0, 0);
     rect(barLineX, barLineY-40, barWidth1, 32);
     
     fill(0, 255, 0);

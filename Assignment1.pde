@@ -1,5 +1,7 @@
 import processing.sound.*;
 import java.io.FileWriter;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 PImage bg;
 PImage worldHome;

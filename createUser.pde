@@ -65,7 +65,15 @@ class createUser
         fill(255, 140, 0);
         textFont(cred);
         textSize(50);
-        text("User Already Exists", 890, 550);
+        text("User Already Exists", 875, 350);
+      }
+      
+      if (Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK) == true)
+      {
+        fill(255, 140, 0);
+        textFont(cred);
+        textSize(50);
+        text("Caps lock is on", 900, 295);
       }
   }
   

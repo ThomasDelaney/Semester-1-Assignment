@@ -44,7 +44,7 @@ If so then a message is displayed to the user so they know the Caps lock key is 
 
 If the user clicks the register page, then the state is changed and new screen with 4 boxes appear, one to take input for the users password and username they want to
 register (input functionality is the same as the input boxes on the login screen except the password characters are displayed instead of dots) and a box labelled 'create' 
-which will write to the logins.txt file if the username is not already being, and one labelled 'return' which will just bring the user back to the login page. I imported 
+which will write to the logins.txt file if the username is not already being used, and one labelled 'return' which will just bring the user back to the login page. I imported 
 the java library java.io.FileWriter which is used to create a FileWriter object which will write the users entered username and password to the logins.txt file. 
 A loop is used to check before hand to see if the user entered username is not already in the logins.txt file, if it is then a message is displayed to the user, else then 
 the user is brought back to the login page after a slight delay.
@@ -74,7 +74,7 @@ greeting, when a Hero object is created its name is then concatinated with .mp3 
 If the user clicks the hero database button then the state will be changed to display the hero database. This will involve two classes, heroBox and heroDatabase.
 heroDatabase will display all the heroBoxes as well as a return button back to the home page and display an Overwatch logo. heroBox is a class which constructor takes in 
 a Hero object. Every Hero from the Hero array list is loaded into a heroBox array list on the heroDatabase page, also on this page there is a general x and y value which will
-increase in the y axis until if it were to be increase again that the next box would go off the screen, it is then reset and the x value is then increased. This will print a clickable
+increase in the y axis until the next box would go off the screen, it is then reset and the x value is then increased. This will print a clickable
 box labelled by every hero name in the Hero array list. Each hero has a specific index number which is assigned by i in the for loop where they are loaded from the heroes.txt file
 from setup(). The main program has a variable called heroIndex, when the mouse hovers over any of the heroBoxes the heroIndex is assigned the index from the Hero which represents
 that heroBox (this will be easier to understand in the youtube video). When the box is clicked the state is changed and a heroPage is displayed, a heroPage function takes in
@@ -83,7 +83,7 @@ the heroPage knows the hero index, it can use that to get the Hero object relate
 information. Each hero page contains a return button back to the heroDatabase and information related to that hero which was taken from the heroes.txt file as well as a jpg image
 of the hero which is an attribute to every Hero class.
 
-As well there is some graphs related to that hero (the numbers are randomised they are not taken from a file), this involves a bar graph which its width always moving back and forth,
+As well there is some graphs related to that hero (the numbers are randomised they are not taken from a file), this involves a bar graph with a constantly increasing and decreasing width,
 a spinning pie chart with text, and a graph with 4 sine waves (Each graph is an object of a class for each graph and involve 4 types of info, breating rate, blood pressure, power 
 and brain activity, all with its different colors). The sine wave class takes in parameters for how fast theta is incremented and how high the wave is, this is randomised for 
 each hero, the sine waves are stored in an array list contained in each Hero class (same with the bar chart, the spinning pie chart however is static to every heroPage).

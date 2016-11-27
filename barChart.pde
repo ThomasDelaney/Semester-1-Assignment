@@ -8,17 +8,17 @@ class barChart
   String BA;
   String BP;
   
-  float barGoal1 = (int)random(1, 800);
-  float barWidth1 = (int)random(1, 800);
+  float barGoal1 = (int)random(1, 700);
+  float barWidth1 = (int)random(1, 700);
   
-  float barGoal2 = (int)random(1, 800);
-  float barWidth2 = (int)random(1, 800);
+  float barGoal2 = (int)random(1, 700);
+  float barWidth2 = (int)random(1, 700);
   
-  float barGoal3 = (int)random(1, 800);
-  float barWidth3 = (int)random(1, 800);
+  float barGoal3 = (int)random(1, 700);
+  float barWidth3 = (int)random(1, 700);
   
-  float barGoal4 = (int)random(1, 800);
-  float barWidth4 = (int)random(1, 800);
+  float barGoal4 = (int)random(1, 700);
+  float barWidth4 = (int)random(1, 700);
   
   void drawBars()
   {
@@ -26,26 +26,26 @@ class barChart
   
     if (barWidth1 == barGoal1)
     {
-      barGoal1 = (int)random(1, 800);
+      barGoal1 = (int)random(1, 700);
     }
     
     barWidth2 = checkBarWidth(barWidth2, barGoal2);
     if (barWidth2 == barGoal2)
     {
-      barGoal2 = (int)random(1, 800);
+      barGoal2 = (int)random(1, 700);
     }
     
     barWidth3 = checkBarWidth(barWidth3, barGoal3);
     if (barWidth3 == barGoal3)
     {
-      barGoal3 = (int)random(1, 800);
+      barGoal3 = (int)random(1, 700);
     }
     
     
     barWidth4 = checkBarWidth(barWidth4, barGoal4);
     if (barWidth4 == barGoal4)
     {
-      barGoal4 = (int)random(1, 800);
+      barGoal4 = (int)random(1, 700);
     }
     
    

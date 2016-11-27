@@ -1,5 +1,6 @@
 # Semester-1-Assignment
 Thomas Delaney DT228/2 Assignment for Semester 1 Object Orientated Programming
+YouTube video demonstrating the project - https://www.youtube.com/watch?v=QOrg6sqlTO8
 
 My UI is based off the Blizzard video game Overwatch!
 It is inspired by the AI in the game called Athena which helps keep track of all the heroes in the game.
@@ -79,9 +80,10 @@ from setup(). The main program has a variable called heroIndex, when the mouse h
 that heroBox (this will be easier to understand in the youtube video). When the box is clicked the state is changed and a heroPage is displayed, a heroPage function takes in
 a hero index, ONE heroPage is created in main, the function (called printPage) will take in the index of the hero of the hero from the heroBox. Here's the cool part.. since 
 the heroPage knows the hero index, it can use that to get the Hero object related to that index from the Hero array list, this will allow the page to display that specific heroes
-information. Each hero page contains a return button back to the heroDatabase and information related to that hero which was taken from the heroes.txt file.
+information. Each hero page contains a return button back to the heroDatabase and information related to that hero which was taken from the heroes.txt file as well as a jpg image
+of the hero which is an attribute to every Hero class.
 
-As well ther is some graphs related to that hero (the numbers are randomised they are not taken from a file), this involves a bar graph which its width always moving back and forth,
+As well there is some graphs related to that hero (the numbers are randomised they are not taken from a file), this involves a bar graph which its width always moving back and forth,
 a spinning pie chart with text, and a graph with 4 sine waves (Each graph is an object of a class for each graph and involve 4 types of info, breating rate, blood pressure, power 
 and brain activity, all with its different colors). The sine wave class takes in parameters for how fast theta is incremented and how high the wave is, this is randomised for 
 each hero, the sine waves are stored in an array list contained in each Hero class (same with the bar chart, the spinning pie chart however is static to every heroPage).

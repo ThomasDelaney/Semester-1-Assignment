@@ -2,7 +2,6 @@ class movingLine
 {
   float x;
   float y;
-  float inc = 1;
   
   void drawLine()
   {

@@ -46,8 +46,6 @@ ArrayList<Hero> heroes = new ArrayList<Hero>();
 
 ArrayList<heroBox> heroBoxes = new ArrayList<heroBox>();
 
-ArrayList<heroPage> pages = new ArrayList<heroPage>();
-
 int UserLoginSize;
 int UserPassSize;
 
@@ -110,7 +108,7 @@ void draw()
     
     if (soundPlaying == false)
     {
-      //theme.play();
+      theme.play();
       soundPlaying = true;
     }
     

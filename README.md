@@ -1,7 +1,8 @@
 # Semester-1-Assignment
 Thomas Delaney DT228/2 Assignment for Semester 1 Object Orientated Programming
 
-YouTube video demonstrating the project - https://www.youtube.com/watch?v=QOrg6sqlTO8
+YouTube video demonstrating the project - 
+[![Video](http://img.youtube.com/vi/QOrg6sqlTO8E/0.jpg)](http://www.youtube.com/watch?v=QOrg6sqlTO8)
 (watch first 3 minutes or so for quick demo, stick around for the other half an hour if you want to see some code explainations)
 
 My UI is based off the Blizzard video game Overwatch!
